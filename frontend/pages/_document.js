@@ -7,7 +7,8 @@ class MyDocument extends Document {
         <Head>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:100, 300, 400, 500, 700, 900&display=optional"
-            rel="stylesheet"
+            rel="preload"
+            as="style"
           />
         </Head>
         <body>
