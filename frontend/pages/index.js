@@ -3,10 +3,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import io from 'Socket.IO-client'
-let socket;
 
-import ReactTooltip from "react-tooltip";
 
 class Word extends React.Component {
   constructor(props) {
@@ -21,7 +18,7 @@ class Word extends React.Component {
     return (
       <React.Fragment>
         {(this.props.wordType == "noun") && <h3 className={styles["article"]}>{this.getArticle()}</h3>}
-        <h3 data-tip data-for={this.props.word} className={styles[this.props.wordType]}>
+        <h3 className={styles[this.props.wordType]}>
           {this.props.word}
         </h3>
       </React.Fragment>
@@ -49,13 +46,14 @@ class WeekSet extends React.Component {
   }
   render() {
     const { words, title, week, year} = this.props;
+    let tagNum = 0;
     return (
       <div className={styles["word-set"]}>
         <h1 className={styles["uke"]}>{"Woche " + week}</h1>
         <h1 className={styles["tema"]}>{title}</h1>
         <ul className={styles["words-preview"]}>
           {words.map((item) => (
-            <li key={item.props.id}>{item}</li>
+            <li key={"tag"+tagNum++}>{item}</li>
           ))}
         </ul>
         <a href={"/weeks/"+year+"/"+week} className={styles["study-button"]}>Øv på gloser</a>
@@ -87,8 +85,8 @@ export default function Home() {
           week="34"
           title="Das ist meine welt"
           words={[
-            <Word word="sein" wordType="verb" id="0" />,
-            <Word word="Stunde" wordType="noun" gender="feminine" id="1" />
+            <Word word="sein" wordType="verb" key="1" />,
+            <Word word="Stunde" wordType="noun" gender="feminine" key="2" />
           ]} />
       </div>
     </div>
