@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: 'Roboto';
 }
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:100, 300, 400, 500, 700, 900&display=optional");
 
 @media (prefers-color-scheme: dark) {
   html {
