@@ -85,8 +85,8 @@ export default function Home() {
           week="34"
           title="Das ist meine welt"
           words={[
-            <Word word="sein" wordType="verb" id="0" />,
-            <Word word="Stunde" wordType="noun" gender="feminine" id="1" />
+            <Word word="sein" wordType="verb" key="0" />,
+            <Word word="Stunde" wordType="noun" key="feminine" id="1" />
           ]} />
       </div>
     </div>
