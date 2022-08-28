@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <link href='https://fonts.googleapis.com/css?family=Roboto:100, 300, 400, 500, 700, 900' rel='stylesheet' />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:100, 300, 400, 500, 700, 900&display=optional' rel='stylesheet' />
         <title>Germanator</title>
       </Head>
       <div id={styles["topbar"]}>
