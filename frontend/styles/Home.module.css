@@ -1,0 +1,157 @@
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  border-bottom: 0.3vw solid #f2f2f2ff;
+  z-index: 10000;
+}
+
+#logo-text {
+  position: absolute;
+  font-weight: 900;
+  font-size: 3.4vw;
+
+  margin: 0px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  background-image: url("https://media.istockphoto.com/photos/german-flag-picture-id835757276?k=20&m=835757276&s=170667a&w=0&h=r0EkOs6MloqZpSXkXs72waYA_zU49sCKBzx6SrK6t1U=");
+  background-size: 100% 70%;
+  background-repeat: repeat-x;
+  background-position: center 69%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+#tabs {
+  position: fixed;
+  padding: 0px;
+  margin: 0px;
+  top: 12%;
+  left: 0%;
+  width: 100%;
+  height: 5%;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tab {
+  all: unset;
+  font-size: 1.7vw;
+  border-bottom: 3px solid black;
+  padding: 0px;
+  margin: 0px;
+
+  text-align: center;
+  width: 10%;
+}
+.tab.current {
+  border-bottom: 3px solid cyan;
+}
+
+#word-sets {
+  overflow-y: scroll;
+  background-color: white;
+  position: absolute;
+  top: 18%;
+  left: 0%;
+  width: 100%;
+  height: 82%;
+  margin-top: 30px;
+
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.word-set {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0.5%;
+  width: fit-content;
+  block-size: fit-content;
+  margin: 1%;
+  margin-bottom: 20px;
+}
+
+.word-set .uke {
+  color: #545454;
+  margin-top: 0.2vw;
+  margin-bottom: 0.06vw;
+
+  font-size: 1.3vw;
+  white-space: nowrap;
+}
+
+.word-set .tema {
+  margin-top: 0px;
+  
+  font-size: 1.6vw;
+  white-space: nowrap;
+
+  margin-bottom: 12px;
+}
+
+.words-preview {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.words-preview li {
+  margin-bottom: 4.5%;
+}
+.words-preview li h3 {
+  text-align: center;
+  margin: 0px;
+  display: inline;
+  border-radius: 5px; 
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  margin-left: 4px;
+}
+.words-preview li h3.noun {
+  background-color: plum; 
+}
+.words-preview li h3.verb {
+  background-color: cornflowerblue;
+}
+.words-preview li h3.adjective {
+  background-color: coral;
+}
+.words-preview li h3.adverb {
+  background-color: forestgreen;
+}
+.words-preview li h3.article {
+  background-color: #ffffff;
+}
+
+
+
+.word-set .study-button {
+  all: unset;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding: 0.2vw;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  cursor: pointer;
+  
+}
