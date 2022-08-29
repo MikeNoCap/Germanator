@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
         const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
         const words = [];
         for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
-            const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords[rowIndex].word_id]);
+            const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords.rows[rowIndex].word_id]);
             let word = {
                 german_word: setWord.rows[0].german_word,
                 norwegian_word: setWord.rows[0].norwegian_word,
