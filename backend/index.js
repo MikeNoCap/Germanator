@@ -8,17 +8,20 @@ const { Server } = require('socket.io');
 
 const io = new Server(server, {
     cors: { 
-        origin: "http://localhost:3000",
+        origin: "*",
         methods: ['POST', "GET"]
     }
 });
 
 app.use(corsMiddleware({
-    origin: "http://localhost:3000"
+    origin: "*"
 }))
 
 io.on("connection", (socket) => {
     console.log("User connected");
+    socket.on("getWeekSet", (data) => {
+	console.log(data);
+    })
 })
 
 
