@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
     console.log("User connected");
     socket.on("getWeekSet", async (data) => {
         const { week, year } = data;
-        const weekSet = await pool.query("SELECT * FROM group WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
+        const weekSet = await pool.query("SELECT * FROM groups WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
         if (weekSet.length == 0) {
             socket.emit("error", { code: 404, message: "No such week-set: " + year + "/" + week });
             return
@@ -73,7 +73,7 @@ io.on("connection", (socket) => {
 
         const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
         const words = [];
-        for (let rowIndex = 0; rowIndex < setWords.length; rowIndex++) {
+        for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
             const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords[rowIndex].word_id]);
             let word = {
                 german_word: setWord.rows[0].german_word,
