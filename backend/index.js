@@ -81,6 +81,7 @@ io.on("connection", (socket) => {
                 word_type: setWord.rows[0].word_type
             };
             words.push(word)
+            console.log(word)
         }
 
         socket.emit("weekSet", words);
