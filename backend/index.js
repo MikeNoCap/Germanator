@@ -6,6 +6,18 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 
+
+const wordtypes = {
+    0: "noun",
+    1: "verb",
+    2: "adjective"
+}
+const genders = {
+    0: "masculine",
+    1: "feminine",
+    2: "neuter"
+}
+
 const pool = new Pool({
     host: 'localhost',
     user: 'germanator',
@@ -80,11 +92,12 @@ io.on("connection", (socket) => {
                 norwegian_word,
                 word_type
             } = setWord.rows[0];
+            word.word_type = wordtypes[word.word_type];
             if (word.word_type === 0) {
                 const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
                 const { plural, gender, norwegian_proper, norwegian_plural} = wordInfo.rows[0];
                 word.plural = plural;
-                word.gender = gender;
+                word.gender = genders[gender];
                 word.norwegian_proper = norwegian_proper;
                 word.norwegian_plural = norwegian_plural;
             }
