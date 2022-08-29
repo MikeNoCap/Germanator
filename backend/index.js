@@ -93,7 +93,7 @@ io.on("connection", (socket) => {
                 word_type
             } = setWord.rows[0];
             word.word_type = wordtypes[word.word_type];
-            if (word.word_type === 0) {
+            if (word.word_type === "noun") {
                 const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
                 const { plural, gender, norwegian_proper, norwegian_plural} = wordInfo.rows[0];
                 word.plural = plural;
