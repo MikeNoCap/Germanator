@@ -76,12 +76,20 @@ io.on("connection", (socket) => {
         for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
             const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords.rows[rowIndex].word_id]);
             let word = {
-                german_word: setWord.rows[0].german_word,
-                norwegian_word: setWord.rows[0].norwegian_word,
-                word_type: setWord.rows[0].word_type
-            };
+                german_word,
+                norwegian_word,
+                word_type
+            } = setWord.rows[0];
+            if (word.word_type === 0) {
+                const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
+                const { plural, gender, norwegian_proper, norwegian_plural} = wordInfo.rows[0];
+                word.plural = plural;
+                word.gender = gender;
+                word.norwegian_proper = norwegian_proper;
+                word.norwegian_plural = norwegian_plural;
+            }
             words.push(word)
-            console.log(word)
+            
         }
 
         socket.emit("weekSet", words);
