@@ -64,11 +64,11 @@ io.on("connection", (socket) => {
     socket.on("getWeekSet", async (data) => {
         const { week, year } = data;
         const weekSet = await pool.query("SELECT * FROM groups WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
-        if (weekSet.length == 0) {
+        if (weekSet.rows.length == 0) {
             socket.emit("error", { code: 404, message: "No such week-set: " + year + "/" + week });
             return
         }
-        const weekSetId = weekSet.rows.id;
+        const weekSetId = weekSet.rows[0].id;
 
 
         const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
