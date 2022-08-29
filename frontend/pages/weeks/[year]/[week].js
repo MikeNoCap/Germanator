@@ -15,6 +15,9 @@ export default function Week(props) {
         socket.on('connect', () => {
             socket.emit("getWeekSet", { week, year })
         });
+        socket.on("weekSet", (data) => {
+            console.log(data)
+        })
 
         socket.on('disconnect', () => {
 

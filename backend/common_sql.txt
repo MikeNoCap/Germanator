@@ -1,0 +1,17 @@
+INSERT INTO noun (word_id, plural, gender, norwegian_proper, norwegian_plural) VALUES (1, 'Wahlfächer', 0, 'valgfaget', 'valgfag');
+INSERT INTO words (german_word, norwegian_word, word_type) VALUES ('wahlfach', 'valgfag', 0);
+
+
+INSERT INTO groups (group_name, is_weekly, week, title) VALUES ('Das ist meine Welt', true, 33, 'Das ist meine Welt');
+
+
+
+INSERT INTO words (german_word, norwegian_word, word_type) VALUES ('mensa', 'kantine', 0);
+INSERT INTO words (german_word, norwegian_word, word_type) VALUES ('stunde', 'timen', 0);
+
+
+
+INSERT INTO noun (word_id, plural, gender, norwegian_proper, norwegian_plural) VALUES (3, 'Stunden', 1, 'timen', 'timer');
+
+
+UPDATE noun SET gender = 2 WHERE id = 1;

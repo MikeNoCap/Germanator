@@ -17,7 +17,9 @@ pool.query(`CREATE TABLE IF NOT EXISTS noun (
     id SERIAL PRIMARY KEY,
     word_id INT,
     plural VARCHAR(255),
-    gender SMALLINT
+    gender SMALLINT,
+    norwegian_proper VARCHAR(255),
+    norwegian_plural VARCHAR(255)
 )`)
 pool.query(`CREATE TABLE IF NOT EXISTS verb (
     id SERIAL PRIMARY KEY,
@@ -59,9 +61,29 @@ app.use(corsMiddleware({
 
 io.on("connection", (socket) => {
     console.log("User connected");
-    socket.on("getWeekSet", (data) => {
-        console.log(data);
-        socket.emit("weekSet");
+    socket.on("getWeekSet", async (data) => {
+        const { week, year } = data;
+        const weekSet = await pool.query("SELECT * FROM group WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
+        if (weekSet.length == 0) {
+            socket.emit("error", { code: 404, message: "No such week-set: " + year + "/" + week });
+            return
+        }
+        const weekSetId = weekSet.rows.id;
+
+
+        const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
+        const words = [];
+        for (let rowIndex = 0; rowIndex < setWords.length; rowIndex++) {
+            const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords[rowIndex].word_id]);
+            let word = {
+                german_word: setWord.rows[0].german_word,
+                norwegian_word: setWord.rows[0].norwegian_word,
+                word_type: setWord.rows[0].word_type
+            };
+            words.push(word)
+        }
+
+        socket.emit("weekSet", words);
     })
 })
 
