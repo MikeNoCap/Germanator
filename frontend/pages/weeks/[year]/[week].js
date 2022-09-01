@@ -11,6 +11,29 @@ let socket;
 
 
 export default function Week(props) {
+    let words = [
+        [
+            "Mensa",
+            "kantine",
+            "noun",
+
+            "Mensen",
+            "feminine",
+            "kantinen",
+            "kantiner",
+        ],
+        [
+            "Stunde",
+            "time",
+            "noun",
+
+            "Stunden",
+            "feminine",
+            "timen",
+            "timer",
+        ],
+
+    ]; 
     const router = useRouter();
     const { week, year } = router.query;
     useEffect(() => {
@@ -42,7 +65,7 @@ export default function Week(props) {
                 <div
                     id={styles["word-panel"]}
                     className={styles["panel"]}>
-                    <WordCards></WordCards>
+                    <WordCards words={words}></WordCards>
                 </div>
                 <div
                     id={styles["info-panel"]}

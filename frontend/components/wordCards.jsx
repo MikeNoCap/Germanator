@@ -5,7 +5,7 @@ class WordCards extends Component {
     constructor(props) {
         super(props);
     }
-    state = { word: null }
+    state = { word: 0 }
     render() {
         return (
             <React.Fragment>
@@ -14,11 +14,13 @@ class WordCards extends Component {
                 <div id={styles["word-container"]}>
                     <h1
                         className={styles["word"] + " " + styles["article"]}>
-                        der
+                        {(this.props.words[this.state.word][4] === "feminine") && "die"}
+                        {(this.props.words[this.state.word][4] === "masculine") && "der"}
+                        {(this.props.words[this.state.word][4] === "neuter") && "das"}
                     </h1>
                     <h1
                         className={styles["word"] + " " + styles["noun"]}>
-                        Hund
+                        {this.props.words[this.state.word][0]}
                     </h1>
                 </div>
                 <button className={styles["right"]+" "+styles["next-prev-buttons"]}>&#8250;</button>
