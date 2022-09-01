@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from "../styles/WordCards.module.css"
 
-class InfoCards extends Component {
+class InfoCard extends Component {
     constructor(props) {
         super(props);
     }

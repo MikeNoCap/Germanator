@@ -26,4 +26,11 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }

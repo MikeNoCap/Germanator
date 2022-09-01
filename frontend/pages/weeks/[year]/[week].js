@@ -1,8 +1,7 @@
 import React, { Component, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import styles from '../../../styles/Week.module.css'
+import WordPanels from '../../../components/wordPanels';
 import Header from '../../../components/header.jsx';
-import WordCards from '../../../components/wordCards';
 
 import io from 'socket.io-client';
 import Head from 'next/head';
@@ -33,7 +32,7 @@ export default function Week(props) {
             "timer",
         ],
 
-    ]; 
+    ];
     const router = useRouter();
     const { week, year } = router.query;
     useEffect(() => {
@@ -60,21 +59,9 @@ export default function Week(props) {
 
     return (
         <React.Fragment>
-            <Header></Header>
-            <div id={styles["panels"]}>
-                <div
-                    id={styles["word-panel"]}
-                    className={styles["panel"]}>
-                    <WordCards words={words}></WordCards>
-                </div>
-                <div
-                    id={styles["info-panel"]}
-                    className={styles["panel"]}>
-                </div>
-            </div>
-
+            <Header />
+            <WordPanels words={words} />
         </React.Fragment>
-
     )
 
 }
