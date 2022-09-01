@@ -1,0 +1,120 @@
+#panels {
+    position: fixed;
+
+
+    width: 65%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.panel {
+    background-color: #f3f3f3;
+    border-radius: 20px;
+}
+
+
+
+#word-panel {
+    width: 30%;
+    height: 50%;
+    position: relative;
+    margin-right: 20px;
+}
+
+#info-panel {
+    width: 55%;
+    height: 70%;
+    position: relative;
+}
+
+
+
+
+#info-title {
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    text-align: center;
+
+}
+
+#info-title h1,
+#info-title h3 {
+    display: inline;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#info-title h3 {
+    color: grey;
+}
+
+
+.word {
+    text-align: center;
+    margin: 0px;
+    display: inline;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+    margin-left: 4px;
+}
+
+.noun {
+    background-color: plum;
+}
+
+.verb {
+    background-color: cornflowerblue;
+}
+
+.adjective {
+    background-color: coral;
+}
+
+.adverb {
+    background-color: forestgreen;
+}
+
+.article {
+    background-color: #ffffff;
+}
+
+
+
+
+
+.arrow {
+    width: 20px;
+    height: 20px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    
+    display: inline-block;
+    padding: 3px;
+    background: transparent;
+}
+
+.right {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: rotate(-45deg) translateY(-50%);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: rotate(135deg) translateY(-50%);
+    -webkit-transform: rotate(135deg);
+}

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
+import Header from '../components/header.jsx'
 
 class Word extends React.Component {
   constructor(props) {
@@ -70,9 +70,7 @@ export default function Home() {
       <Head>
         <title>Germanator</title>
       </Head>
-      <div id={styles["topbar"]}>
-        <h1 id={styles["logo-text"]}>der Germanator</h1>
-      </div>
+      <Header></Header>
       <div id={styles["tabs"]}>
         <button className={styles["tab"] + " " + styles["current"]}>Ukesgloser</button>
         <button className={styles["tab"]}>Ordsamlinger</button>

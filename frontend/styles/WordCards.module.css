@@ -1,0 +1,83 @@
+#word-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gainsboro;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+#word-container h1 {
+    text-align: center;
+    font-size: 2.4vw;
+}
+
+.word {
+    text-align: center;
+    margin: 0px;
+    display: inline;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+    margin-left: 4px;
+}
+
+.noun {
+    background-color: plum;
+}
+
+.verb {
+    background-color: cornflowerblue;
+}
+
+.adjective {
+    background-color: coral;
+}
+
+.adverb {
+    background-color: forestgreen;
+}
+
+.article {
+    background-color: #ffffff;
+}
+
+
+
+
+.next-prev-buttons {
+    all: unset;
+
+    position: absolute;
+
+    top: 50%;
+    
+    transform: translateY(-50%);
+
+    text-align: center;
+    font-size: 2vw;
+    display: inline-block;
+    text-decoration: none;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.next-prev-buttons:hover {
+    cursor: pointer;
+    background-color: #d2d2d2;
+}
+
+.next-prev-buttons:active {
+    transform: scale(.97) translateY(-50%);
+}
+
+
+.right {
+    right: 5%;
+}
+.left {
+    left: 5%;
+}

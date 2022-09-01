@@ -1,7 +1,11 @@
 import React, { Component, useEffect } from 'react';
 import { useRouter } from 'next/router'
+import styles from '../../../styles/Week.module.css'
+import Header from '../../../components/header.jsx';
+import WordCards from '../../../components/wordCards';
 
 import io from 'socket.io-client';
+import Head from 'next/head';
 
 let socket;
 
@@ -33,7 +37,19 @@ export default function Week(props) {
 
     return (
         <React.Fragment>
-            <h1>{week} {year}</h1>
+            <Header></Header>
+            <div id={styles["panels"]}>
+                <div
+                    id={styles["word-panel"]}
+                    className={styles["panel"]}>
+                    <WordCards></WordCards>
+                </div>
+                <div
+                    id={styles["info-panel"]}
+                    className={styles["panel"]}>
+                </div>
+            </div>
+
         </React.Fragment>
 
     )
