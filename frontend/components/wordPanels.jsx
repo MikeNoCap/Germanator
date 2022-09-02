@@ -8,6 +8,9 @@ class WordPanels extends Component {
     }
     state = { wordIndex: 0 }
     render() {
+        if (!this.props.words) {
+            return (<div></div>);
+        }
         const wordArray = this.props.words[this.state.wordIndex];
         const word = {
             // General
