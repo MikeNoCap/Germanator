@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from "../styles/WordPanels.module.css"
 import WordCard from "./wordCard.jsx"
+import InfoCard from "./infoCard.jsx";
 
 class WordPanels extends Component {
     constructor(props) {
@@ -55,6 +56,7 @@ class WordPanels extends Component {
                 <div
                     id={styles["info-panel"]}
                     className={styles["panel"]}>
+		    <InfoCard />
                 </div>
             </div>
         );
