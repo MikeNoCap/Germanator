@@ -72,21 +72,24 @@ app.use(corsMiddleware({
 }))
 
 
+async function getNounData(wordId) {
+    const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [wordId]);
+    const nounInfo = { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
+    return nounInfo;
+}
+
 async function getFullWord(wordId) {
     const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [wordId]);
-    let word = {
+    const wordInfo = {
         german_word,
         norwegian_word,
         word_type
     } = setWord.rows[0];
     word.word_type = wordtypes[word.word_type];
+    
+    let word;
     if (word.word_type === "noun") {
-        const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [wordId]);
-        const { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
-        word.german_plural = german_plural;
-        word.gender = genders[gender];
-        word.norwegian_proper = norwegian_proper;
-        word.norwegian_plural = norwegian_plural;
+        word = Object.assign({}, wordInfo, getNounData(wordId))
     }
     return word;
 }
@@ -107,8 +110,9 @@ io.on("connection", (socket) => {
         const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
         const words = [];
         for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
-            words.push(await getFullWord(setWords.rows[rowIndex].word_id));
-
+            const wordId = setWords.rows[rowIndex].word_id;
+            const fullWord = await getFullWord(wordId);
+            words.push(fullWord);
         }
 
         socket.emit("weekSet", words);
