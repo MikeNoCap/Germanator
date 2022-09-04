@@ -85,7 +85,7 @@ async function getFullWord(wordId) {
         norwegian_word,
         word_type
     } = setWord.rows[0];
-    wordInfo.word_type = wordtypes[word.word_type];
+    wordInfo.word_type = wordtypes[wordInfo.word_type];
     
     let word;
     if (word.word_type === "noun") {
