@@ -81,7 +81,7 @@ async function getFullWord(wordId) {
     } = setWord.rows[0];
     word.word_type = wordtypes[word.word_type];
     if (word.word_type === "noun") {
-        const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
+        const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [wordId]);
         const { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
         word.german_plural = german_plural;
         word.gender = genders[gender];
