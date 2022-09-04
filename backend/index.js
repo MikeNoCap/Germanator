@@ -89,7 +89,8 @@ async function getFullWord(wordId) {
     
     let word;
     if (word.word_type === "noun") {
-        word = Object.assign({}, wordInfo, getNounData(wordId))
+        const nounInfo = await getNounData(wordId);
+        word = Object.assign({}, wordInfo, nounInfo);
     }
     return word;
 }
