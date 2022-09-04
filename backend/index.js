@@ -123,7 +123,6 @@ io.on("connection", (socket) => {
         const words = [];
         const wordIds = await getSetWords(weekSetId);
         wordIds.forEach(async (wordId) => {
-            const wordId = wordId;
             const fullWord = await getFullWord(wordId);
             words.push(fullWord);
         })
