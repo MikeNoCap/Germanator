@@ -97,6 +97,16 @@ async function getFullWord(wordId) {
 }
 
 
+async function getSetWords(setId) {
+    let setWordsRows = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [setId]);
+    const setWords = [];
+    for (let i = 0; i < setWordsRows.length; i++) {
+        setWords.push(setWordsRows[i].word_id)
+    }
+    return setWords;
+}
+
+
 io.on("connection", (socket) => {
     console.log("User connected");
     socket.on("getWeekSet", async (data) => {
@@ -109,13 +119,14 @@ io.on("connection", (socket) => {
         const weekSetId = weekSet.rows[0].id;
 
 
-        const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
+        
         const words = [];
-        for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
-            const wordId = setWords.rows[rowIndex].word_id;
+        const wordIds = await getSetWords(weekSetId);
+        wordIds.forEach(async (wordId) => {
+            const wordId = wordId;
             const fullWord = await getFullWord(wordId);
             words.push(fullWord);
-        }
+        })
 
         socket.emit("weekSet", words);
     })
