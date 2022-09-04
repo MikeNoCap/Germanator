@@ -11,21 +11,26 @@ class WordCard extends Component {
         return (
             <React.Fragment>
 
-                <button onClick={this.props.previousClick} className={styles["left"]+" "+styles["next-prev-buttons"]}>&#8249;</button>
-                <div key={this.props.german_word} id={styles["word-container"]}>
-                    <h1
-                        className={styles["word"] + " " + styles["article"]}>
-                        {(this.props.gender === "feminine") && "die"}
-                        {(this.props.gender === "masculine") && "der"}
-                        {(this.props.gender === "neuter") && "das"}
-                    </h1>
-                    <h1
-                        className={styles["word"] + " " + styles["noun"]}>
-                        {this.props.german_word}
-                    </h1>
+                <button onClick={this.props.previousClick} className={styles["left"] + " " + styles["next-prev-buttons"]}>&#8249;</button>
+                <div className={styles["scene"]}>
+                    <div className={styles["card"]}>
+                        <div key={this.props.german_word} id={styles["word-container"]}>
+                            <h1
+                                className={styles["word"] + " " + styles["article"]}>
+                                {(this.props.gender === "feminine") && "die"}
+                                {(this.props.gender === "masculine") && "der"}
+                                {(this.props.gender === "neuter") && "das"}
+                            </h1>
+                            <h1
+                                className={styles["word"] + " " + styles["noun"]}>
+                                {this.props.german_word}
+                            </h1>
+                        </div>
+                    </div>
                 </div>
-                <button onClick={this.props.nextClick} className={styles["right"]+" "+styles["next-prev-buttons"]}>&#8250;</button>
-            </React.Fragment>
+                <button onClick={this.props.nextClick} className={styles["right"] + " " + styles["next-prev-buttons"]}>&#8250;</button>
+                <h4 className={styles["word-number"]}>{this.props.wordNumber}</h4>
+            </React.Fragment >
         );
     }
 }

@@ -1,0 +1,158 @@
+.word {
+    text-align: center;
+    margin: 0px;
+    display: inline;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+    margin-left: 4px;
+}
+
+.noun {
+    background-color: plum;
+}
+
+.verb {
+    background-color: cornflowerblue;
+}
+
+.adjective {
+    background-color: coral;
+}
+
+.adverb {
+    background-color: forestgreen;
+}
+
+.article {
+    background-color: #ffffff;
+}
+
+.info-card {
+    overflow: hidden;
+    animation: load 1s;
+}
+
+
+@keyframes load {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.title {
+    margin: 0px;
+    border-radius: 20px 20px 0px 0px;
+    text-align: center;
+}
+
+
+.gender {
+    margin-top: 12px;
+}
+
+.gender h2,
+.gender h3 {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.gender h3 {
+    color: rgba(29, 29, 29, 0.867);
+}
+
+
+.noun-case-selector {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noun-cases {
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+    width: 40%;
+    font-size: 2.3vw;
+}
+
+.next-prev-buttons {
+    all: unset;
+
+
+
+
+
+    text-align: center;
+    font-size: 2vw;
+    display: inline-block;
+    text-decoration: none;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    background-color: #ddd;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    margin: 0px;
+}
+
+.next-prev-buttons:hover {
+    cursor: pointer;
+    background-color: #d2d2d2;
+}
+
+.next-prev-buttons:active {
+    transform: scale(.97);
+}
+
+
+.conjugations {
+    position: absolute;
+    height: 53%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.propers {
+    text-align: center;
+    width: 50%;
+}
+.propers h2, .non-propers h2 {
+    margin-top: 0%;
+    margin-bottom: 5%;
+}
+
+.non-propers {
+    text-align: center;
+    width: 50%;
+}
+
+.singular {
+    position: static;
+    margin-bottom: 0px;
+}
+.singular-text {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.plural {
+    margin-top: 1%;
+    position: static;
+}
+.plural-text {
+    margin-bottom: 1%;
+}

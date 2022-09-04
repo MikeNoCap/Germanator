@@ -71,6 +71,27 @@ app.use(corsMiddleware({
     origin: "*"
 }))
 
+
+async function getFullWord(wordId) {
+    const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [wordId]);
+    let word = {
+        german_word,
+        norwegian_word,
+        word_type
+    } = setWord.rows[0];
+    word.word_type = wordtypes[word.word_type];
+    if (word.word_type === "noun") {
+        const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
+        const { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
+        word.german_plural = german_plural;
+        word.gender = genders[gender];
+        word.norwegian_proper = norwegian_proper;
+        word.norwegian_plural = norwegian_plural;
+    }
+    return word;
+}
+
+
 io.on("connection", (socket) => {
     console.log("User connected");
     socket.on("getWeekSet", async (data) => {
@@ -86,23 +107,8 @@ io.on("connection", (socket) => {
         const setWords = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [weekSetId]);
         const words = [];
         for (let rowIndex = 0; rowIndex < setWords.rows.length; rowIndex++) {
-            const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [setWords.rows[rowIndex].word_id]);
-            let word = {
-                german_word,
-                norwegian_word,
-                word_type
-            } = setWord.rows[0];
-            word.word_type = wordtypes[word.word_type];
-            if (word.word_type === "noun") {
-                const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [setWords.rows[rowIndex].word_id]);
-                const { german_plural, gender, norwegian_proper, norwegian_plural} = wordInfo.rows[0];
-                word.german_plural = german_plural;
-                word.gender = genders[gender];
-                word.norwegian_proper = norwegian_proper;
-                word.norwegian_plural = norwegian_plural;
-            }
-            words.push(word)
-            
+            words.push(await getFullWord(setWords.rows[rowIndex].word_id));
+
         }
 
         socket.emit("weekSet", words);

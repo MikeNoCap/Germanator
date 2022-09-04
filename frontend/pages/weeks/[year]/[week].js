@@ -41,6 +41,7 @@ export default function Week(props) {
             for (let i = 0; i < data.length; i++) {
                 arrayWords.push(getWordArrayFormat(data[i]))
             }
+            console.log(arrayWords)
             setWords(arrayWords);
         })
 

@@ -18,7 +18,7 @@ class WordPanels extends Component {
             german_word: wordArray[0],
             norwegian_word: wordArray[1],
             word_type: wordArray[2],
-            
+
 
             // Noun
             german_plural: wordArray[3],
@@ -26,13 +26,15 @@ class WordPanels extends Component {
             norwegian_proper: wordArray[5],
             norwegian_plural: wordArray[6],
         }
-        
+
         return (
             <div id={styles["panels"]}>
                 <div
                     id={styles["word-panel"]}
                     className={styles["panel"]}>
                     <WordCard
+                        wordNumber={this.state.wordIndex+1+"/"+this.props.words.length}
+
                         german_word={word.german_word}
                         norwegian_word={word.norwegian_word}
                         word_type={word.word_type}
@@ -44,13 +46,13 @@ class WordPanels extends Component {
                         norwegian_plural={word.norwegian_plural}
 
                         nextClick={() => {
-                            if (this.state.wordIndex+1 !== this.props.words.length) {
-                                this.setState({ wordIndex: this.state.wordIndex+1});
+                            if (this.state.wordIndex + 1 !== this.props.words.length) {
+                                this.setState({ wordIndex: this.state.wordIndex + 1 });
                             }
                         }}
                         previousClick={() => {
                             if (this.state.wordIndex !== 0) {
-                                this.setState({ wordIndex: this.state.wordIndex-1});
+                                this.setState({ wordIndex: this.state.wordIndex - 1 });
                             }
                         }}
 
@@ -59,7 +61,17 @@ class WordPanels extends Component {
                 <div
                     id={styles["info-panel"]}
                     className={styles["panel"]}>
-		    <InfoCard />
+                    <InfoCard
+                        german_word={word.german_word}
+                        norwegian_word={word.norwegian_word}
+                        word_type={word.word_type}
+
+                        // Noun specific
+                        german_plural={word.german_plural}
+                        gender={word.gender}
+                        norwegian_proper={word.norwegian_proper}
+                        norwegian_plural={word.norwegian_plural}
+                    />
                 </div>
             </div>
         );

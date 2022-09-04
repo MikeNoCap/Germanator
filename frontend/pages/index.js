@@ -1,9 +1,12 @@
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Header from '../components/header.jsx'
+
+import io from 'socket.io-client';
+
 
 class Word extends React.Component {
   constructor(props) {
@@ -45,7 +48,7 @@ class WeekSet extends React.Component {
     super(props);
   }
   render() {
-    const { words, title, week, year} = this.props;
+    const { words, title, week, year } = this.props;
     let tagNum = 0;
     return (
       <div className={styles["word-set"]}>
@@ -53,17 +56,46 @@ class WeekSet extends React.Component {
         <h1 className={styles["tema"]}>{title}</h1>
         <ul className={styles["words-preview"]}>
           {words.map((item) => (
-            <li key={"tag"+tagNum++}>{item}</li>
+            <li key={"tag" + tagNum++}>{item}</li>
           ))}
         </ul>
-        <a href={"/weeks/"+year+"/"+week} className={styles["study-button"]}>Øv på gloser</a>
+        <a href={"/weeks/" + year + "/" + week} className={styles["study-button"]}>Øv på gloser</a>
       </div>
     )
   }
 }
 
-export default function Home() {
 
+
+let socket;
+
+export default function Home() {
+  const {weekSets, setWeekSets} = useState(null);
+  useEffect(() => {
+    socket = io("http://194.195.244.202:8080");
+    socket.on('connect', () => {
+      socket.emit("getAllWeekSets")
+    });
+    socket.on("allWeekSets", (data) => {
+      const arrayWords = [];
+      for (let i = 0; i < data.length; i++) {
+        arrayWords.push(getWordArrayFormat(data[i]))
+      }
+      console.log(arrayWords)
+      setWords(arrayWords);
+    })
+
+    socket.on('disconnect', () => {
+
+    });
+
+    return () => {
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('pong');
+    };
+
+  });
 
   return (
     <div>
@@ -78,8 +110,8 @@ export default function Home() {
       </div>
       <div id={styles["word-sets"]}>
         <WeekSet
-          year="2020"
-          week="34"
+          year="2022"
+          week="33"
           title="Das ist meine welt"
           words={[
             <Word word="sein" wordType="verb" key="1" />,
