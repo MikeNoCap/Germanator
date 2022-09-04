@@ -10,7 +10,8 @@ const { Server } = require('socket.io');
 const wordtypes = {
     0: "noun",
     1: "verb",
-    2: "adjective"
+    2: "adjective",
+    3: "adverb"
 }
 const genders = {
     0: "masculine",
@@ -92,6 +93,9 @@ async function getFullWord(wordId) {
     if (wordInfo.word_type === "noun") {
         const nounInfo = await getNounData(wordId);
         word = Object.assign({}, wordInfo, nounInfo);
+    }
+    else if (wordInfo.word_type === "adverb") {
+        word = wordInfo;
     }
     return word;
 }

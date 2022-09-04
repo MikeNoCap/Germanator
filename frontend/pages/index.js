@@ -52,7 +52,7 @@ class WeekSet extends React.Component {
     let tagNum = 0;
     return (
       <div className={styles["word-set"]}>
-        <h1 className={styles["uke"]}>{"Woche " + week}</h1>
+        <h1 className={styles["uke"]}>{"Woche " + week + " - " + year}</h1>
         <h1 className={styles["tema"]}>{title}</h1>
         <ul className={styles["words-preview"]}>
           {words.map((item) => (
@@ -70,14 +70,34 @@ class WeekSet extends React.Component {
 let socket;
 
 export default function Home() {
-  const {weekSets, setWeekSets} = useState(null);
+  const [weekSets, setWeekSets ] = useState(null);
   useEffect(() => {
     socket = io("http://194.195.244.202:8080");
     socket.on('connect', () => {
       socket.emit("getAllWeekSets")
     });
+
     socket.on("allWeekSets", (data) => {
-      console.log(data);
+      console.log(data)
+      const weekSets = [];
+      for (const wordSet of data) {
+        const setWords = [];
+        let key = 0;
+        for (const word of wordSet.words) {
+          key++;
+          setWords.push(
+            <Word word={word.german_word} wordType={word.word_type} key={key} gender={word.gender}/>
+          )
+        }
+        weekSets.push(
+          <WeekSet
+            year={wordSet.year}
+            week={wordSet.week}
+            title={wordSet.title}
+            words={setWords} />
+        )
+      }
+      setWeekSets(weekSets);
     })
 
     socket.on('disconnect', () => {
@@ -104,14 +124,7 @@ export default function Home() {
         <button className={styles["tab"]}>Ordbok</button>
       </div>
       <div id={styles["word-sets"]}>
-        <WeekSet
-          year="2022"
-          week="33"
-          title="Das ist meine welt"
-          words={[
-            <Word word="sein" wordType="verb" key="1" />,
-            <Word word="Stunde" wordType="noun" gender="feminine" key="2" />
-          ]} />
+        {weekSets}
       </div>
     </div>
   )
