@@ -74,7 +74,7 @@ app.use(corsMiddleware({
 
 async function getNounData(wordId) {
     const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [wordId]);
-    const nounInfo = { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
+    const nounInfo = { german_plural, gender: genders[gender], norwegian_proper, norwegian_plural } = wordInfo.rows[0];
     return nounInfo;
 }
 
