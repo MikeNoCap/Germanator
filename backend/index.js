@@ -98,7 +98,9 @@ async function getFullWord(wordId) {
 
 
 async function getSetWords(setId) {
-    let setWordsRows = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [setId]);
+    const setWordsResult = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [setId]);
+    const setWordsRows = setWordsResult.rows;
+    
     const setWords = [];
     for (let i = 0; i < setWordsRows.length; i++) {
         setWords.push(setWordsRows[i].word_id)
