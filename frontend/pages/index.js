@@ -77,12 +77,7 @@ export default function Home() {
       socket.emit("getAllWeekSets")
     });
     socket.on("allWeekSets", (data) => {
-      const arrayWords = [];
-      for (let i = 0; i < data.length; i++) {
-        arrayWords.push(getWordArrayFormat(data[i]))
-      }
-      console.log(arrayWords)
-      setWords(arrayWords);
+      console.log(data);
     })
 
     socket.on('disconnect', () => {

@@ -87,7 +87,7 @@ async function getFullWord(wordId) {
         word_type
     } = setWord.rows[0];
     wordInfo.word_type = wordtypes[wordInfo.word_type];
-    
+
     let word;
     if (wordInfo.word_type === "noun") {
         const nounInfo = await getNounData(wordId);
@@ -100,7 +100,7 @@ async function getFullWord(wordId) {
 async function getSetWords(setId) {
     const setWordsResult = await pool.query("SELECT * FROM word_groups WHERE group_id = $1", [setId]);
     const setWordsRows = setWordsResult.rows;
-    
+
     const setWords = [];
     for (let i = 0; i < setWordsRows.length; i++) {
         setWords.push(setWordsRows[i].word_id)
@@ -111,6 +111,33 @@ async function getSetWords(setId) {
 
 io.on("connection", (socket) => {
     console.log("User connected");
+    socket.on("getAllWeekSets", async (data) => {
+        const weekSetsResult = await pool.query("SELECT * FROM groups WHERE is_weekly = true");
+        const weekSetsRows = weekSetsResult.rows;
+
+        const weekSets = [];
+        for (const weekSetRow of weekSetsRows) {
+            const weekSet = {
+                id,
+                group_name,
+                is_weekly,
+                week,
+                title
+            } = weekSetRow;
+
+            const setWordIds = await getSetWords(weekSet.id);
+            const setWords = [];
+            for (const setWordId of setWordIds) {
+                const fullWord = await getFullWord(setWordId);
+                setWords.push(fullWord);
+            }
+            weekSet.words = setWords;
+
+            weekSets.push(weekSet);
+        }
+        socket.emit("allWeekSets", weekSets);
+
+    })
     socket.on("getWeekSet", async (data) => {
         const { week, year } = data;
         const weekSet = await pool.query("SELECT * FROM groups WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
@@ -121,9 +148,9 @@ io.on("connection", (socket) => {
         const weekSetId = weekSet.rows[0].id;
 
 
-        
+
         const words = [];
-        
+
         const wordIds = await getSetWords(weekSetId);
         for (const wordId of wordIds) {
             const fullWord = await getFullWord(wordId);
