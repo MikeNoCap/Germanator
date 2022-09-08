@@ -64,7 +64,7 @@ function NounGenderDisplay(props) {
     return (
         <div className={styles["gender"]}>
             <h2>Kjønn</h2>
-            <h3>{props.gender}</h3>
+            <h3 className={styles["load"]} key={props.gender}>{props.gender}</h3>
         </div>
     );
 }
@@ -80,7 +80,7 @@ function NounCaseSelector(props) {
 function NounProperInfo(props) {
     const { properArticle, properArticlePlural, german_word, german_plural } = props;
     return (
-        <div className={styles["propers"]}>
+        <div key={properArticle+properArticlePlural+german_word+german_plural} className={styles["propers"] + " " + styles["load"]}>
             <h2>Bestemt</h2>
 
             <div className={styles["singular"]}>
@@ -107,7 +107,7 @@ function NounProperInfo(props) {
 function NounNonProperInfo(props) {
     const { nonProperArticle, nonProperArticlePlural, german_word, german_plural } = props;
     return (
-        <div className={styles["non-propers"]}>
+        <div key={nonProperArticle+nonProperArticlePlural+german_word+german_plural} className={styles["non-propers"] + " " + styles["load"]}>
             <h2>Ubestemt</h2>
 
             <div className={styles["singular"]}>
@@ -160,10 +160,10 @@ class NounCard extends Component {
         const nonProperArticlePlural = articleTable[this.state.forms[this.state.formIndex]]["non-proper"]["plural"]
         const { german_word, german_plural, gender } = this.props;
         return (
-            <div key={this.props.german_word} className={styles["info-card"]}>
+            <div key={this.props.word_type} className={styles["info-card"] + " " + styles["load"]}>
                 <h1 className={styles["title"] + " " + styles["noun"]}>Substantiv</h1>
                 <NounGenderDisplay gender={this.props.gender} />
-                <NounCaseSelector handlePrevious={this.handlePrevious} handleNext={this.handleNext} form={this.state.forms[this.state.formIndex]} />
+                <NounCaseSelector key={this.props.german_word} handlePrevious={this.handlePrevious} handleNext={this.handleNext} form={this.state.forms[this.state.formIndex]} />
                 <div className={styles["conjugations"]}>
                     <NounProperInfo properArticle={properArticle} properArticlePlural={properArticlePlural} german_word={german_word} german_plural={german_plural} />
                     <NounNonProperInfo nonProperArticle={nonProperArticle} nonProperArticlePlural={nonProperArticlePlural} german_word={german_word} german_plural={german_plural} />
@@ -173,14 +173,37 @@ class NounCard extends Component {
     }
 }
 
+
+class AdverbCard extends Component {
+    constructor(props) {
+        super(props);
+    }
+    state = {}
+    render() {
+        return (
+            <div key={this.props.word_type} className={styles["info-card"] + " " + styles["adverb-card"]+ " " + styles["load"]}>
+                <h1 className={styles["title"]}>Adverb</h1>
+                <h3>Adverb bøyes ikke</h3>
+                
+            </div>
+        );
+    }
+}
+
+
+
 function InfoCard(props) {
     let Card;
     if (props.word_type === 'noun') {
         Card = <NounCard
+            key={props.germam_word}
             german_word={props.german_word}
             german_plural={props.german_plural}
             gender={props.gender}
         />;
+    }
+    if (props.word_type === 'adverb') {
+        Card = <AdverbCard />;
     }
     return (Card);
 }

@@ -56,7 +56,7 @@ class WeekSet extends React.Component {
         <h1 className={styles["tema"]}>{title}</h1>
         <ul className={styles["words-preview"]}>
           {words.map((item) => (
-            <li key={"tag" + tagNum++}>{item}</li>
+            <li key={tagNum++}>{item}</li>
           ))}
         </ul>
         <a href={"/weeks/" + year + "/" + week} className={styles["study-button"]}>Øv på gloser</a>
@@ -72,6 +72,7 @@ let socket;
 export default function Home() {
   const [weekSets, setWeekSets ] = useState(null);
   useEffect(() => {
+    if (weekSets) { return; }
     socket = io("http://194.195.244.202:8080");
     socket.on('connect', () => {
       socket.emit("getAllWeekSets")
@@ -80,17 +81,18 @@ export default function Home() {
     socket.on("allWeekSets", (data) => {
       console.log(data)
       const weekSets = [];
+      let setNr = 0;
       for (const wordSet of data) {
+        setNr++;
         const setWords = [];
-        let key = 0;
         for (const word of wordSet.words) {
-          key++;
           setWords.push(
-            <Word word={word.german_word} wordType={word.word_type} key={key} gender={word.gender}/>
+            <Word word={word.german_word} wordType={word.word_type} gender={word.gender}/>
           )
         }
         weekSets.push(
           <WeekSet
+            key={setNr}
             year={wordSet.year}
             week={wordSet.week}
             title={wordSet.title}

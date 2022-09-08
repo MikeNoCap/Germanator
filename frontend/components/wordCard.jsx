@@ -15,14 +15,16 @@ class WordCard extends Component {
                 <div className={styles["scene"]}>
                     <div className={styles["card"]}>
                         <div key={this.props.german_word} id={styles["word-container"]}>
+                            {this.props.word_type === "noun" &&
+                                <h1
+                                    className={styles["word"] + " " + styles["article"]}>
+                                    {(this.props.gender === "feminine") && "die"}
+                                    {(this.props.gender === "masculine") && "der"}
+                                    {(this.props.gender === "neuter") && "das"}
+                                </h1>
+                            }
                             <h1
-                                className={styles["word"] + " " + styles["article"]}>
-                                {(this.props.gender === "feminine") && "die"}
-                                {(this.props.gender === "masculine") && "der"}
-                                {(this.props.gender === "neuter") && "das"}
-                            </h1>
-                            <h1
-                                className={styles["word"] + " " + styles["noun"]}>
+                                className={styles["word"] + " " + styles[this.props.word_type]}>
                                 {this.props.german_word}
                             </h1>
                         </div>

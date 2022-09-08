@@ -29,9 +29,26 @@
     background-color: #ffffff;
 }
 
+.load {
+    animation: load 0.6s;
+}
+
 .info-card {
     overflow: hidden;
-    animation: load 1s;
+    height: 100%;
+    border-radius: 20px; 
+}
+.adverb-card {
+    background-color: forestgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: unset;
+    gap: 0px;
+}
+.adverb-card h3 {
+    text-align: center;
+    margin: 0px;
 }
 
 
@@ -49,6 +66,7 @@
     margin: 0px;
     border-radius: 20px 20px 0px 0px;
     text-align: center;
+    width: 100%;
 }
 
 
