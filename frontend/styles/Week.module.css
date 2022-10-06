@@ -16,11 +16,10 @@
 
 #study-buttons {
     position: fixed;
-    bottom: 10%;
-    height: 20%;
+    bottom: 4%;
+    height: 6%;
     width: 100%;
     left: 0%;
-    background-color: red;
     
     display: flex;
     justify-content: center;
