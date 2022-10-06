@@ -11,5 +11,8 @@
     padding-right: 2vw;
     padding-left: 2vw;
     cursor: pointer;
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
     
 }
