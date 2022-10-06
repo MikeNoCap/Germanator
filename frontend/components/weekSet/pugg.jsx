@@ -10,7 +10,7 @@ class Pugg extends Component {
     render() {
         return (
             <div id={styles["page"]}>
-                HELLO WORLD!!!
+                
             </div>
         )
     }
