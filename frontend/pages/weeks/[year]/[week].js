@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import WordPanels from '../../../components/wordPanels';
+import Pugg from '../../../components/weekSet/pugg.jsx';
 import Header from '../../../components/header.jsx';
 import styles from '../../../styles/Week.module.css';
 import io from 'socket.io-client';
@@ -28,6 +29,7 @@ function getWordArrayFormat(word) {
 
 export default function Week(props) {
     const [words, setWords] = useState(null);
+    const [showPugg, setPugg] = useState(false);
     const router = useRouter();
     const { week, year } = router.query;
     useEffect(() => {
@@ -62,10 +64,9 @@ export default function Week(props) {
             <Header />
             <WordPanels words={words} />
             <div id={styles["study-buttons"]}>
-                <button className={styles["study-button"]}>Pugg</button>
-                <button className={styles["study-button"]}>Match</button>
-                <button className={styles["study-button"]}>Memo</button>
+                <button onClick={() => { setPugg(true); }} className={styles["study-button"]}>Pugg</button>
             </div>
+            {showPugg && <Pugg></Pugg>}
 
         </React.Fragment>
     )
