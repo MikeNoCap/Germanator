@@ -61,6 +61,10 @@ export default function Week(props) {
         <React.Fragment>
             <Header />
             <WordPanels words={words} />
+            <div>
+                Øv på glosene
+            </div>
+
         </React.Fragment>
     )
 
