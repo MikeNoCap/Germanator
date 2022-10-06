@@ -62,7 +62,9 @@ export default function Week(props) {
             <Header />
             <WordPanels words={words} />
             <div id={styles["study-buttons"]}>
-                <button className={styles["study-button"]}>Skriv</button>
+                <button className={styles["study-button"]}>Pugg</button>
+                <button className={styles["study-button"]}>Match</button>
+                <button className={styles["study-button"]}>Memo</button>
             </div>
 
         </React.Fragment>
