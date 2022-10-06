@@ -61,8 +61,8 @@ export default function Week(props) {
         <React.Fragment>
             <Header />
             <WordPanels words={words} />
-            <div className={styles["study-button"]}>
-                Øv på glosene
+            <div id={styles["study-buttons"]}>
+                <button className={styles["study-button"]}>Skriv</button>
             </div>
 
         </React.Fragment>
