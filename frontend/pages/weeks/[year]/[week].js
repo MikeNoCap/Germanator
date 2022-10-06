@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import WordPanels from '../../../components/wordPanels';
 import Header from '../../../components/header.jsx';
-
+import styles from '../../../styles/Week.module.css';
 import io from 'socket.io-client';
 import Head from 'next/head';
 
@@ -61,7 +61,7 @@ export default function Week(props) {
         <React.Fragment>
             <Header />
             <WordPanels words={words} />
-            <div>
+            <div className={styles["study-button"]}>
                 Øv på glosene
             </div>
 

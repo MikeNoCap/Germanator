@@ -1,0 +1,15 @@
+.study-button {
+    all: unset;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    font-size: 1.5vw;
+    font-weight: 500;
+    padding: 0.2vw;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    cursor: pointer;
+    
+}
