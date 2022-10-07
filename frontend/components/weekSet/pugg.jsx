@@ -39,6 +39,7 @@ function LanguageSelector(props) {
 class Pugg extends Component {
     constructor(props) {
         super(props);
+        this.setLang = this.setLang.bind(this);
     }
     state = {
         selectedLang: null,
