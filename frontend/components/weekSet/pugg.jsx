@@ -27,7 +27,9 @@ function LanguageSelector(props) {
                 }} id={styles["norwegian"]} className={styles["lang"]+norwegianSelected}>
                 </button>
             </div>
-            <button className={styles["start-btn"]}>
+            <button onClick={() => {
+                props.handler(selectedLang);
+            }} className={styles["start-btn"]}>
                 Start
             </button>
         </div>
@@ -53,8 +55,7 @@ class Pugg extends Component {
             <React.Fragment>
                 <Header />
                 <div id={styles["page"]}>
-                <LanguageSelector handler = {this.setLang}/>
-                    {<LanguageSelector /> && (!this.state.selectedLang)}
+                    {<LanguageSelector handler = {this.setLang}/> && (this.state.selectedLang == null)}
                 </div>
             </React.Fragment>
         )
