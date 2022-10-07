@@ -32,7 +32,11 @@
 }
 
 .lang {
+    all: unset;
+
     width: 30%;
     height: 98%;
     border: 1px solid black;
+
+    border-radius: 30px;
 }
