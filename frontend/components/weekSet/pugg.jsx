@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from "../../styles/Pugg.module.css";
+import Header from "../header.jsx";
 
 class Pugg extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Pugg extends Component {
     render() {
         return (
             <div id={styles["page"]}>
-                
+                <Header />
             </div>
         )
     }
