@@ -52,10 +52,10 @@
     background-image: url("http://panel.mogus.lol/image.png");
 }
 .lang#both {
-    background-size: contain, contain;
     background-image: url("http://panel.mogus.lol/image.png"), url("https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png");
     background-position: top, bottom;
     background-repeat: no-repeat, repeat-y;
+    background-size: auto, contain;
 }
 
 .lang h2 {
