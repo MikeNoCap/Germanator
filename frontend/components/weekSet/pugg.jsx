@@ -7,6 +7,11 @@ function LanguageSelector(props) {
     return (
         <div id={styles["lang-select"]}>
             <h1>Jeg vil svare på ...</h1>
+            <div id={styles["lang-options"]}>
+                <button className={styles["lang"]}>
+                    <h2>Tysk</h2>
+                </button>
+            </div>
         </div>
     )
 }
