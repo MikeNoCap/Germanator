@@ -54,5 +54,6 @@
 
 .lang h2 {
     font-size: 5vw;
-    text-shadow: 1px #f3f3f3;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
 }
