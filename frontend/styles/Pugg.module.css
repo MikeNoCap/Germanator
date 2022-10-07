@@ -34,6 +34,8 @@
 .lang {
     all: unset;
 
+    cursor: pointer;
+
     width: 30%;
     height: 98%;
     background-color: #f3f3f3;
@@ -42,6 +44,7 @@
 
     margin-left: 5px;
     margin-right: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .lang#german {
     background-size: cover;
