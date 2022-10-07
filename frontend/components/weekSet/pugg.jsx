@@ -5,7 +5,7 @@ import Header from "../header.jsx";
 
 function LanguageSelector(props) {
     return (
-        <div id={styles["language-selector"]}>
+        <div id={styles["lang-select"]}>
             <h1>Jeg vil svare på ...</h1>
         </div>
     )
