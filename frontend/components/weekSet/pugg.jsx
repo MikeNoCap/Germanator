@@ -7,10 +7,10 @@ function LanguageSelector(props) {
     const [selectedLang, setSelectedLang] = useState("...");
     let germanSelected = "";
     let norwegianSelected = "";
-    if (selectedLang == "norsk") {
+    if (selectedLang == "Norsk") {
         norwegianSelected = " "+styles["selected"]
     }
-    else if (selectedLang == "tysk") {
+    else if (selectedLang == "Tysk") {
         germanSelected = " "+styles["selected"]
     }
     return (
@@ -18,13 +18,13 @@ function LanguageSelector(props) {
             <h1>Jeg vil svare på {selectedLang}</h1>
             <div id={styles["lang-options"]}>
                 <button onClick={() => {
-                    setSelectedLang("tysk");
+                    setSelectedLang("Tysk");
                 }} id={styles["german"]} className={styles["lang"]+germanSelected}>
                     <h2>Tysk</h2>
                 </button>
 
                 <button onClick={() => {
-                    setSelectedLang("norsk");
+                    setSelectedLang("Norsk");
                 }} id={styles["norwegian"]} className={styles["lang"]+norwegianSelected}>
                     <h2>Norsk</h2>
                 </button>
