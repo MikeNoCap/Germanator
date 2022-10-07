@@ -46,6 +46,9 @@
     margin-right: 5px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+.lang.selected {
+    border: 4px solid dodgerblue;
+}
 .lang#german {
     background-size: cover;
     background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png");
