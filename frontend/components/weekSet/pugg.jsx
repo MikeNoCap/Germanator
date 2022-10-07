@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import styles from "../../styles/Pugg.module.css";
 import Header from "../header.jsx";
 
+
+function LanguageSelector(props) {
+    return (
+        <React.Fragment>
+            <h1>Jeg vil svare på ...</h1>
+        </React.Fragment>
+    )
+}
+
 class Pugg extends Component {
     constructor(props) {
         super(props);
@@ -12,6 +21,7 @@ class Pugg extends Component {
         return (
             <div id={styles["page"]}>
                 <Header />
+
             </div>
         )
     }
