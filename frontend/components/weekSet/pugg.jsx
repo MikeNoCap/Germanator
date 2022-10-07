@@ -61,7 +61,7 @@ class Pugg extends Component {
                 <Header />
                 <div id={styles["page"]}>
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
-                    {this.words[this.state.currentWord]}
+                    {JSON.stringify(this.words[this.state.currentWord])}
                 </div>
             </React.Fragment>
         )
