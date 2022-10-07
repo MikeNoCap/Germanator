@@ -55,7 +55,7 @@ class Pugg extends Component {
             <React.Fragment>
                 <Header />
                 <div id={styles["page"]}>
-                    {<LanguageSelector handler = {this.setLang}/> && (this.state.selectedLang == null)}
+                    {<LanguageSelector handler = {this.setLang}/> && true}
                 </div>
             </React.Fragment>
         )
