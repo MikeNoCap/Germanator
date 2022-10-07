@@ -20,13 +20,11 @@ function LanguageSelector(props) {
                 <button onClick={() => {
                     setSelectedLang("Tysk");
                 }} id={styles["german"]} className={styles["lang"]+germanSelected}>
-                    <h2>Tysk</h2>
                 </button>
 
                 <button onClick={() => {
                     setSelectedLang("Norsk");
                 }} id={styles["norwegian"]} className={styles["lang"]+norwegianSelected}>
-                    <h2>Norsk</h2>
                 </button>
             </div>
         </div>
