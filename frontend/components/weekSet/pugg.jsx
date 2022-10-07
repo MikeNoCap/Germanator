@@ -11,6 +11,12 @@ function LanguageSelector(props) {
                 <button className={styles["lang"]}>
                     <h2>Tysk</h2>
                 </button>
+                <button className={styles["lang"]}>
+                    <h2>Norsk</h2>
+                </button>
+                <button className={styles["lang"]}>
+                    <h2>Begge</h2>
+                </button>
             </div>
         </div>
     )
