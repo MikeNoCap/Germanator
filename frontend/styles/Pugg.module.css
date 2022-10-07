@@ -11,7 +11,7 @@
 
 
 #lang-select {
-    position: fixed;
+    position: absolute;
 
     width: 70%;
     height: 80%;
@@ -20,6 +20,5 @@
 
     transform: translate(-50%, -50%);
     background-color: red;
-    z-index: 10000000000000000000000000000;
 
 }
