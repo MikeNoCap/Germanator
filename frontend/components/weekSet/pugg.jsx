@@ -16,12 +16,13 @@ class Pugg extends Component {
         super(props);
     }
     state = {
+        languageSelected: false,
     }
     render() {
         return (
             <div id={styles["page"]}>
                 <Header />
-
+                {<LanguageSelector /> && !this.state.languageSelected}
             </div>
         )
     }
