@@ -4,27 +4,27 @@ import Header from "../header.jsx";
 
 
 function LanguageSelector(props) {
-    const [selectedLang, setSelectedLang] = useState("");
+    const [selectedLang, setSelectedLang] = useState("...");
     let germanSelected = "";
     let norwegianSelected = "";
-    if (selectedLang == "norwegian") {
+    if (selectedLang == "norsk") {
         norwegianSelected = " "+styles["selected"]
     }
-    else if (selectedLang == "german") {
+    else if (selectedLang == "tysk") {
         germanSelected = " "+styles["selected"]
     }
     return (
         <div id={styles["lang-select"]}>
-            <h1>Jeg vil svare på ...</h1>
+            <h1>Jeg vil svare på {selectedLang}</h1>
             <div id={styles["lang-options"]}>
                 <button onClick={() => {
-                    setSelectedLang("german");
+                    setSelectedLang("tysk");
                 }} id={styles["german"]} className={styles["lang"]+germanSelected}>
                     <h2>Tysk</h2>
                 </button>
 
                 <button onClick={() => {
-                    setSelectedLang("norwegian");
+                    setSelectedLang("norsk");
                 }} id={styles["norwegian"]} className={styles["lang"]+norwegianSelected}>
                     <h2>Norsk</h2>
                 </button>
