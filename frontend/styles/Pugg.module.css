@@ -20,5 +20,6 @@
 
     transform: translate(-50%, -50%);
     background-color: red;
+    z-index: 10000000000000000000000000000;
 
 }
