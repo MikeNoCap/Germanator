@@ -8,13 +8,13 @@ function LanguageSelector(props) {
         <div id={styles["lang-select"]}>
             <h1>Jeg vil svare på ...</h1>
             <div id={styles["lang-options"]}>
-                <button className={styles["lang"]}>
+                <button id={styles["german"]} className={styles["lang"]}>
                     <h2>Tysk</h2>
                 </button>
-                <button className={styles["lang"]}>
+                <button id={styles["norwegian"]} className={styles["lang"]}>
                     <h2>Norsk</h2>
                 </button>
-                <button className={styles["lang"]}>
+                <button id={styles["both"]} className={styles["lang"]}>
                     <h2>Begge</h2>
                 </button>
             </div>

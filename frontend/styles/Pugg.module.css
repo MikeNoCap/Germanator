@@ -43,6 +43,9 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+.lang#german {
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png");
+}
 
 .lang h2 {
     margin: 0px;
