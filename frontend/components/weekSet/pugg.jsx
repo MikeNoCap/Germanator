@@ -22,6 +22,7 @@ class Pugg extends Component {
         return (
             <div id={styles["page"]}>
                 <Header />
+                <LanguageSelector />
                 {<LanguageSelector /> && !this.state.languageSelected}
             </div>
         )
