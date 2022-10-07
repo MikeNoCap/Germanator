@@ -66,7 +66,7 @@ export default function Week(props) {
             <div id={styles["study-buttons"]}>
                 <button onClick={() => { setPugg(true); }} className={styles["study-button"]}>Pugg</button>
             </div>
-            {showPugg && <Pugg></Pugg>}
+            {showPugg && <Pugg words={words}></Pugg>}
 
         </React.Fragment>
     )

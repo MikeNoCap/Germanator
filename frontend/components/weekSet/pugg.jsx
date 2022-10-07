@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import styles from "../../styles/Pugg.module.css";
 import Header from "../header.jsx";
+import shuffleArray from '../../utils/arrayShuffle';
 
 
 function LanguageSelector(props) {
@@ -40,9 +41,12 @@ class Pugg extends Component {
     constructor(props) {
         super(props);
         this.setLang = this.setLang.bind(this);
+        this.words = this.props.words;
+        shuffleArray(this.words);
     }
     state = {
         selectedLang: null,
+        
     }
     setLang(lang) {
         this.setState(
