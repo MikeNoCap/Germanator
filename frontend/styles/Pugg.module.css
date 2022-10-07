@@ -11,7 +11,7 @@
 
 
 #lang-select {
-    position: fixed;
+    position: absolute;
 
     width: 70%;
     height: 80%;
