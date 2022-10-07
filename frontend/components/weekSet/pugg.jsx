@@ -5,9 +5,9 @@ import Header from "../header.jsx";
 
 function LanguageSelector(props) {
     return (
-        <React.Fragment>
+        <div id={styles["language-selector"]}>
             <h1>Jeg vil svare på ...</h1>
-        </React.Fragment>
+        </div>
     )
 }
 
@@ -20,11 +20,13 @@ class Pugg extends Component {
     }
     render() {
         return (
-            <div id={styles["page"]}>
+            <React.Fragment>
                 <Header />
-                <LanguageSelector />
-                {<LanguageSelector /> && !this.state.languageSelected}
-            </div>
+                <div id={styles["page"]}>
+                
+                    {<LanguageSelector /> && !this.state.languageSelected}
+                </div>
+            </React.Fragment>
         )
     }
 }
