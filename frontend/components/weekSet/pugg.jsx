@@ -46,7 +46,7 @@ class Pugg extends Component {
     }
     state = {
         selectedLang: null,
-        
+        currentWord: 0,
     }
     setLang(lang) {
         this.setState(
@@ -61,6 +61,7 @@ class Pugg extends Component {
                 <Header />
                 <div id={styles["page"]}>
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
+                    {this.words[this.state.currentWord]}
                 </div>
             </React.Fragment>
         )
