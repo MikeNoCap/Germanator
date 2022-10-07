@@ -63,3 +63,22 @@
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 
 }
+
+
+.start-btn {
+    all: unset;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    font-size: 1.5vw;
+    font-weight: 500;
+    padding: 0.2vw;
+    padding-right: 3.3vw;
+    padding-left: 3.3vw;
+    cursor: pointer;
+
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
+}
