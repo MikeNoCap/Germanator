@@ -3,6 +3,64 @@ import styles from "../../styles/Pugg.module.css";
 import Header from "../header.jsx";
 import shuffleArray from '../../utils/arrayShuffle';
 
+const articleTable = {
+    "Nominative": {
+        "proper": {
+            "masculine": "der",
+            "feminine": "die",
+            "neuter": "das",
+            "plural": "die"
+        },
+        "non-proper": {
+            "masculine": "ein",
+            "feminine": "eine",
+            "neuter": "ein",
+            "plural": "keine"
+        }
+    },
+    "Accusative": {
+        "proper": {
+            "masculine": "den",
+            "feminine": "die",
+            "neuter": "das",
+            "plural": "die"
+        },
+        "non-proper": {
+            "masculine": "einen",
+            "feminine": "eine",
+            "neuter": "ein",
+            "plural": "keine"
+        }
+    },
+    "Dative": {
+        "proper": {
+            "masculine": "dem",
+            "feminine": "der",
+            "neuter": "dem",
+            "plural": "den"
+        },
+        "non-proper": {
+            "masculine": "einem",
+            "feminine": "einer",
+            "neuter": "einem",
+            "plural": "keinen"
+        }
+    },
+    "Genitive": {
+        "proper": {
+            "masculine": "des",
+            "feminine": "der",
+            "neuter": "des",
+            "plural": "der"
+        },
+        "non-proper": {
+            "masculine": "eines",
+            "feminine": "einer",
+            "neuter": "eines",
+            "plural": "keiner"
+        }
+    }
+}
 
 function LanguageSelector(props) {
     const [selectedLang, setSelectedLang] = useState("...");
@@ -57,12 +115,20 @@ class Pugg extends Component {
     }
     render() {
         const currentWord = this.words[this.state.currentWord];
+        let norwegian;
+        if (currentWord[2] == "noun") {
+            norwegian = currentWord[5]
+        }
+        else {
+            norwegian = currentWord[1]
+        }
         return (
             <React.Fragment>
                 <Header />
                 <div id={styles["page"]}>
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     {JSON.stringify(currentWord)}
+                    {<h2>Skriv <h1>{norwegian}</h1> på tysk</h2>}
 
                   
                     <input></input>
