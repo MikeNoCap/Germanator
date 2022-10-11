@@ -116,8 +116,10 @@ class Pugg extends Component {
     render() {
         const currentWord = this.words[this.state.currentWord];
         let norwegian;
+        let german;
         if (currentWord[2] == "noun") {
             norwegian = currentWord[5]
+            german = articleTable["Nominative"]["proper"][currentWord[4]]+" "+currentWord[0]
         }
         else {
             norwegian = currentWord[1]
@@ -129,6 +131,7 @@ class Pugg extends Component {
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     {JSON.stringify(currentWord)}
                     {<h2>Skriv <h1>{norwegian}</h1> på tysk</h2>}
+                    {<h1>{german}</h1>}
 
                   
                     <input></input>
