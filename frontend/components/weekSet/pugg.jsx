@@ -134,7 +134,7 @@ class Pugg extends Component {
                     {<h1>{german}</h1>}
 
                   
-                    <input type="text"></input>
+                    <input type="text" id={styles["svar-input"]}></input>
                 </div>
             </React.Fragment>
         )

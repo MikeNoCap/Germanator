@@ -89,7 +89,7 @@
 }
 
 
-input[text] {
+#svar-input {
     position: absolute;
     width: 70%;
     height: 20%;
