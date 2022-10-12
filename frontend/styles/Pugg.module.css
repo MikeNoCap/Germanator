@@ -107,6 +107,12 @@
     flex-wrap: wrap;
 }
 
+#question h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1vw;
+}
+
 
 #svar-input {
     position: absolute;
