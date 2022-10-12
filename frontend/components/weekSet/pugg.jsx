@@ -130,11 +130,11 @@ class Pugg extends Component {
                 <div id={styles["page"]}>
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     {JSON.stringify(currentWord)}
-                    {<h2>Skriv <h1>{norwegian}</h1> på tysk</h2>}
-                    {<h1>{german}</h1>}
 
-                  
-                    <input type="text" id={styles["svar-input"]}></input>
+                    <div id={styles["question"]}>
+                        <h2>Skriv <span className={styles["bold"]}>{norwegian}</span> på tysk</h2>
+                        <input type="text" id={styles["svar-input"]}></input>
+                    </div>
                 </div>
             </React.Fragment>
         )
