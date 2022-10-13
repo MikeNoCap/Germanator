@@ -133,8 +133,9 @@ class Pugg extends Component {
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
                         <input type="text" spellcheck="false" id={styles["svar-input"]}></input>
                         <div id={styles["answer-buttons"]}>
-                            <button>Svar</button>
                             <button>Hopp over</button>
+                            <button>Svar</button>
+                            
                         </div>
                     </div>
                 </div>
