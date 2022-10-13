@@ -107,6 +107,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    margin: 0px;
 }
 
 #question h2 {
@@ -118,6 +119,7 @@
 
 
 #svar-input {
+    margin: 0px;
     position: absolute;
     width: 42%;
     height: 10%;
