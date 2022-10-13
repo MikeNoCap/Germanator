@@ -107,7 +107,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    align-content: center;
     background-color: dodgerblue;
     margin: 0px;
 }
