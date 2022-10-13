@@ -85,19 +85,19 @@ function NounProperInfo(props) {
 
             <div className={styles["singular"]}>
                 <h3 className={styles["singular-text"]}>Entall</h3>
-                <h3 className={styles["article"] + " " + styles["word"]}>
+                <h3 className={"article" + " " + "word"}>
                     {properArticle}
                 </h3>
-                <h3 className={styles["word"] + " " + styles["noun"]}>
+                <h3 className={"word" + " " + "noun"}>
                     {german_word}
                 </h3>
             </div>
             <div className={styles["plural"]}>
                 <h3 className={styles["plural-text"]}>Flertall</h3>
-                <h3 className={styles["article"] + " " + styles["word"]}>
+                <h3 className={"article" + " " + "word"}>
                     {properArticlePlural}
                 </h3>
-                <h3 className={styles["word"] + " " + styles["noun"]}>
+                <h3 className={"word" + " " + "noun"}>
                     {german_plural}
                 </h3>
             </div>
