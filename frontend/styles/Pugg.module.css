@@ -134,6 +134,6 @@
     background-color: blue;
 }
 
-#answer-buttons {
-
+.answer-button {
+    width: 50%;
 }
