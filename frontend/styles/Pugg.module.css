@@ -108,6 +108,7 @@
     flex-wrap: wrap;
     align-items: center;
     margin: 0px;
+    justify-content: center;
 }
 
 #question h2 {
