@@ -129,5 +129,7 @@
 
 
 #answer-buttons {
+    width: 42%;
     display: inline;
+    background-color: blue;
 }
