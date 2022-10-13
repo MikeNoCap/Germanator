@@ -161,7 +161,7 @@ class NounCard extends Component {
         const { german_word, german_plural, gender } = this.props;
         return (
             <div key={this.props.word_type} className={styles["info-card"] + " " + styles["load"]}>
-                <h1 className={styles["title"] + " " + styles["noun"]}>Substantiv</h1>
+                <h1 className={styles["title"]+" noun"}>Substantiv</h1>
                 <NounGenderDisplay gender={this.props.gender} />
                 <NounCaseSelector key={this.props.german_word} handlePrevious={this.handlePrevious} handleNext={this.handleNext} form={this.state.forms[this.state.formIndex]} />
                 <div className={styles["conjugations"]}>
