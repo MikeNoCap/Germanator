@@ -112,10 +112,10 @@ function NounNonProperInfo(props) {
 
             <div className={styles["singular"]}>
                 <h3 className={styles["singular-text"]}>Entall</h3>
-                <h3 className={styles["article"] + " " + "word"}>
+                <h3 className={"article" + " " + "word"}>
                     {nonProperArticle}
                 </h3>
-                <h3 className={styles["word"] + " " + "noun"}>
+                <h3 className={"word" + " " + "noun"}>
                     {german_word}
                 </h3>
             </div>
