@@ -129,8 +129,6 @@ class Pugg extends Component {
                 <Header />
                 <div id={styles["page"]}>
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
-                    {JSON.stringify(currentWord)}
-
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
                         <input type="text" id={styles["svar-input"]}></input>

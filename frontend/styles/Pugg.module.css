@@ -118,10 +118,11 @@
 
 #svar-input {
     position: absolute;
-    width: 70%;
-    height: 20%;
+    width: 65%;
+    height: 10%;
     top: 60%;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 2vw;
 }
 
