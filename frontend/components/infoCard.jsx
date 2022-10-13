@@ -121,10 +121,10 @@ function NounNonProperInfo(props) {
             </div>
             <div className={styles["plural"]}>
                 <h3 className={styles["plural-text"]}>Flertall</h3>
-                <h3 className={styles["article"] + " " + "word"}>
+                <h3 className={"article" + " " + "word"}>
                     {nonProperArticlePlural}
                 </h3>
-                <h3 className={styles["word"] + " " + "noun"}>
+                <h3 className={"word" + " " + "noun"}>
                     {german_plural}
                 </h3>
             </div>
