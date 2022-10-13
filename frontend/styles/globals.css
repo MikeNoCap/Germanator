@@ -15,3 +15,34 @@ body {
     background: black;
   }
 }
+
+.word {
+  text-align: center;
+  margin: 0px;
+  display: inline;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+.noun {
+  background-color: plum;
+}
+
+.verb {
+  background-color: cornflowerblue;
+}
+
+.adjective {
+  background-color: coral;
+}
+
+.adverb {
+  background-color: forestgreen;
+}
+
+.article {
+  background-color: #ffffff;
+}
