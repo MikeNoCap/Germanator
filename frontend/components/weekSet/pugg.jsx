@@ -135,7 +135,6 @@ class Pugg extends Component {
                         <div id={styles["answer-buttons"]}>
                             <button>Hopp over</button>
                             <button>Svar</button>
-                            
                         </div>
                     </div>
                 </div>
