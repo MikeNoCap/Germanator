@@ -131,7 +131,7 @@ class Pugg extends Component {
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
-                        <input type="text" id={styles["svar-input"]}></input>
+                        <input type="text" spellcheck="false" id={styles["svar-input"]}></input>
                     </div>
                 </div>
             </React.Fragment>
