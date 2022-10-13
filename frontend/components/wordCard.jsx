@@ -17,14 +17,14 @@ class WordCard extends Component {
                         <div key={this.props.german_word} id={styles["word-container"]}>
                             {this.props.word_type === "noun" &&
                                 <h1
-                                    className={styles["word"] + " " + styles["article"]}>
+                                    className={"word" + " " + "article"}>
                                     {(this.props.gender === "feminine") && "die"}
                                     {(this.props.gender === "masculine") && "der"}
                                     {(this.props.gender === "neuter") && "das"}
                                 </h1>
                             }
                             <h1
-                                className={styles["word"] + " " + styles[this.props.word_type]}>
+                                className={"word" + " " + this.props.word_type}>
                                 {this.props.german_word}
                             </h1>
                         </div>
