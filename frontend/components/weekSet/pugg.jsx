@@ -140,7 +140,7 @@ class Pugg extends Component {
                             className={styles["answer-button"]}>Hopp over</button>
                             <button 
                             onClick={
-                                () => alert("SVAAAR!")
+                                () => alert("A")
                             }
                             className={styles["answer-button"]}>Svar</button>
                         </div>
