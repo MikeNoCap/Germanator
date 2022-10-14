@@ -99,6 +99,7 @@ class Pugg extends Component {
     constructor(props) {
         super(props);
         this.setLang = this.setLang.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.words = this.props.words;
         shuffleArray(this.words);
     }
