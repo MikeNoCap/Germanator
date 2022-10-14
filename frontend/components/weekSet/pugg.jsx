@@ -150,10 +150,10 @@ class Pugg extends Component {
                                 () => {
                                     alert(german)
                                     if (this.state.inputValue == german) {
-                                        alert("DAS IS RICHTIG!")
+                                        alert("DAS IST RICHTIG!")
                                     }
                                     else {
-                                        alert("DAS IS FALCH!")
+                                        alert("DAS IST FALCH!")
                                     }
                                 }
                             }
