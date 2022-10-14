@@ -137,6 +137,8 @@
 .answer-button {
     all: unset;
     display: inline;
+
+    
     border: 1px solid black;
     width: 50%;
     height: 100%;
