@@ -147,5 +147,6 @@
     text-align: center;
     font-size: 2vw;
     border-radius: 15px;
-
+    margin-left: 2px;
+    margin-right: 2px;
 }
