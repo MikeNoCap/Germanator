@@ -148,6 +148,7 @@ class Pugg extends Component {
                             <button 
                             onClick={
                                 () => {
+                                    alert(german)
                                     if (this.state.inputValue == german) {
                                         alert("DAS IS RICHTIG!")
                                     }
