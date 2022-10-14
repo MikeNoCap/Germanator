@@ -132,10 +132,12 @@
     width: 42%;
     height: 15%;;
     display: inline;
-    background-color: blue;
 }
 
 .answer-button {
+    all: unset;
+    border: 1px solid black;
     width: 50%;
     height: 100%;
+
 }
