@@ -147,7 +147,14 @@ class Pugg extends Component {
                             className={styles["answer-button"]}>Hopp over</button>
                             <button 
                             onClick={
-                                () => alert(this.state.inputValue)
+                                () => {
+                                    if (this.state.inputValue == german) {
+                                        alert("DAS IS RICHTIG!")
+                                    }
+                                    else {
+                                        alert("DAS IS FALCH!")
+                                    }
+                                }
                             }
                             className={styles["answer-button"]}>Svar</button>
                         </div>
