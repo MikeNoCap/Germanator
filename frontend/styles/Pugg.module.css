@@ -132,7 +132,7 @@
     width: 42%;
     height: 15%;;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .answer-button {
