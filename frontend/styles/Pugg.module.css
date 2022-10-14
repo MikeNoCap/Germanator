@@ -129,6 +129,7 @@
 
 
 #answer-buttons {
+    margin-top: 5px;
     width: 42%;
     height: 15%;;
     display: flex;
