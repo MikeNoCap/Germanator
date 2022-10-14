@@ -131,14 +131,13 @@
 #answer-buttons {
     width: 42%;
     height: 15%;;
-    display: inline;
 }
 
 .answer-button {
     all: unset;
     display: inline;
 
-    
+
     border: 1px solid black;
     width: 50%;
     height: 100%;
