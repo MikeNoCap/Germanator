@@ -134,7 +134,11 @@ class Pugg extends Component {
                         <input type="text" spellcheck="false" id={styles["svar-input"]}></input>
                         <div id={styles["answer-buttons"]}>
                             <button className={styles["answer-button"]}>Hopp over</button>
-                            <button className={styles["answer-button"]}>Svar</button>
+                            <button 
+                            onClick={
+                                () => alert("SVAAAR!")
+                            }
+                            className={styles["answer-button"]}>Svar</button>
                         </div>
                     </div>
                 </div>
