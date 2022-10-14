@@ -105,6 +105,7 @@ class Pugg extends Component {
     state = {
         selectedLang: null,
         currentWord: 0,
+        inputValue: ""
     }
     setLang(lang) {
         this.setState(
@@ -112,6 +113,11 @@ class Pugg extends Component {
                 selectedLang: lang
             }
         );
+    }
+    handleInput(event) {
+        this.setState({
+            inputValue: event.target.value
+        })
     }
     render() {
         const currentWord = this.words[this.state.currentWord];
@@ -131,7 +137,7 @@ class Pugg extends Component {
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
-                        <input type="text" spellcheck="false" id={styles["svar-input"]}></input>
+                        <input type="text" spellcheck="false" onChange={this.handleInput} id={styles["svar-input"]}></input>
                         <div id={styles["answer-buttons"]}>
                             <button
                             onClick={
