@@ -131,6 +131,8 @@
 #answer-buttons {
     width: 42%;
     height: 15%;;
+    display: flex;
+    justify-content: center;
 }
 
 .answer-button {
