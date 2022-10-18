@@ -1,10 +1,10 @@
-import express = require('express');
-import corsMiddleware = require('cors');
+const express = require('express');
+const corsMiddleware = require('cors');
 const { Pool } = require('pg');
 const app = express();
-import http = require('http');
+const http = require('http');
 const server = http.createServer(app);
-import { Server } = require('socket.io');
+const { Server } = require('socket.io');
 
 
 const wordtypes = {
