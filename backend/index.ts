@@ -1,10 +1,10 @@
-const express = require('express');
-const corsMiddleware = require('cors');
+import express = require('express');
+import corsMiddleware = require('cors');
 const { Pool } = require('pg');
 const app = express();
-const http = require('http');
+import http = require('http');
 const server = http.createServer(app);
-const { Server } = require('socket.io');
+import { Server } = require('socket.io');
 
 
 const wordtypes = {
@@ -26,39 +26,6 @@ const pool = new Pool({
     password: "German123"
 })
 
-pool.query(`CREATE TABLE IF NOT EXISTS noun (
-    id SERIAL PRIMARY KEY,
-    word_id INT,
-    plural VARCHAR(255),
-    gender SMALLINT,
-    norwegian_proper VARCHAR(255),
-    norwegian_plural VARCHAR(255)
-)`)
-pool.query(`CREATE TABLE IF NOT EXISTS verb (
-    id SERIAL PRIMARY KEY,
-    word_id INT,
-    irregular BOOLEAN
-)`)
-
-pool.query(`CREATE TABLE IF NOT EXISTS words (
-    id SERIAL PRIMARY KEY,
-    german_word VARCHAR(255),
-    norwegian_word VARCHAR(255),
-    word_type SMALLINT
-)`)
-
-pool.query(`CREATE TABLE IF NOT EXISTS groups (
-    id SERIAL PRIMARY KEY,
-    group_name VARCHAR(255),
-    is_weekly BOOLEAN,
-    week INT,
-    title VARCHAR(255)
-)`)
-pool.query(`CREATE TABLE IF NOT EXISTS word_groups (
-    id SERIAL PRIMARY KEY,
-    group_id INT,
-    word_id INT
-)`)
 
 
 const io = new Server(server, {
@@ -78,6 +45,11 @@ async function getNounData(wordId) {
     const nounInfo = { german_plural, gender, norwegian_proper, norwegian_plural } = wordInfo.rows[0];
     nounInfo.gender = genders[nounInfo.gender];
     return nounInfo;
+}
+
+async function getVerbData(wordId) {
+    const wordInfo = await pool.query("SELECT * FROM noun WHERE word_id = $1", [wordId]);
+    
 }
 
 async function getFullWord(wordId) {
