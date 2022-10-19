@@ -101,6 +101,9 @@ class Pugg extends Component {
         this.setLang = this.setLang.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
+        this.handleAnswer = this.handleAnswer.bind(this);
+        this.handleSkip = this.handleSkip.bind(this);
+
         this.words = this.props.words;
         shuffleArray(this.words);
     }
@@ -126,6 +129,18 @@ class Pugg extends Component {
             return
         }
         alert("Enter")
+        if (this.state.inputValue === "") {
+            this.handleSkip()
+        }
+        esle {
+            this.handleAnswer()
+        }
+    }
+    handleAnswer() {
+        alert("Answer")
+    }
+    handleSkip() {
+        alert("SKIP!")
     }
     render() {
         const currentWord = this.words[this.state.currentWord];
@@ -149,19 +164,12 @@ class Pugg extends Component {
                         <div id={styles["answer-buttons"]}>
                             <button
                             onClick={
-                                () => alert("SKIIIP!")
+                                this.handleSkip
                             }
                             className={styles["answer-button"]}>Hopp over</button>
                             <button 
                             onClick={
-                                () => {
-                                    if (this.state.inputValue == german) {
-                                        alert("DAS IST RICHTIG!")
-                                    }
-                                    else {
-                                        alert("DAS IST FALCH!")
-                                    }
-                                }
+                                this.handleAnswer
                             }
                             className={styles["answer-button"]}>Svar</button>
                         </div>
