@@ -160,7 +160,7 @@ class Pugg extends Component {
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
-                        
+                        <div id={styles["svar-input"]}></div>
 
                         <div id={styles["answer-buttons"]}>
                             <button
