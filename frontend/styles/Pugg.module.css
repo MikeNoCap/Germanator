@@ -168,6 +168,8 @@
     transform: translate(-50%, -50%);
 
     color: white;
+    animation: swipe 0.7s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes swipe {
