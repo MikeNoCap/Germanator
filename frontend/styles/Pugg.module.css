@@ -123,13 +123,14 @@
     margin: 0px;
     width: 42%;
     height: 10%;
-    font-size: 2.5vw;
-    text-align: center;
+    
 }
 
 #svar-input input {
     width: 100%;
     height: 100%;
+    font-size: 2.5vw;
+    text-align: center;
 }
 
 
