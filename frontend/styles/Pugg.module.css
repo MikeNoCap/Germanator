@@ -128,7 +128,9 @@
     background-color: red;
 }
 #svar-input-text {
+    
     all: unset;
+    border: 1px solid black;
     position: absolute;
     left: 0%;
     top: 0%;
