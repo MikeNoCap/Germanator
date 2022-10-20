@@ -161,11 +161,13 @@ class Pugg extends Component {
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
                         <input 
+                        id={styles["svar-input"]}
                         ref={input => input && input.focus()} 
                         type="text" 
                         spellcheck="false" 
                         onChange={this.handleInput} 
                         onKeyPress={this.handleEnter} />
+                        
                         <div id={styles["answer-buttons"]}>
                             <button
                             onClick={
