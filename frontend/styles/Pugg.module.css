@@ -149,7 +149,7 @@
     pointer-events: none;
     background-color: green;
     border: 1px solid green;
-    animation: swipe 0.7s;
+    animation: swipe 10s;
 }
 
 
@@ -168,7 +168,7 @@
     text-align: center;
 
     color: white;
-    animation: swipe 0.7s;
+    animation: swipe 10s;
 }
 
 @keyframes swipe {
