@@ -149,8 +149,7 @@
     pointer-events: none;
     background-color: green;
     border: 1px solid green;
-    animation: swipe 2s;
-    animation-iteration-count: infinite;
+    animation: swipe 0.7s;
 }
 
 
@@ -169,8 +168,7 @@
     text-align: center;
 
     color: white;
-    animation: swipe 2s;
-    animation-iteration-count: infinite;
+    animation: swipe 0.7s;
 }
 
 @keyframes swipe {
