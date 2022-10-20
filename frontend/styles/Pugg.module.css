@@ -154,6 +154,12 @@
 }
 
 
+#svar-input-correct {
+    width: 100%;
+    text-align: center;
+    
+}
+
 @keyframes swipe {
     from { width: 0%; }
     to {width: 100%;}
