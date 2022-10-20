@@ -168,8 +168,10 @@ class Pugg extends Component {
                             spellcheck="false" 
                             onChange={this.handleInput} 
                             onKeyPress={this.handleEnter} />
-                            <div id={styles["svar-input-load"]} />
-                            <h3 id={styles["svar-input-correct"]} >Super!</h3>
+                            <div id={styles["svar-input-load"]}>
+                                <h3 id={styles["svar-input-correct"]} >Super!</h3>
+                            </div>
+                            
                         </div>
 
                         <div id={styles["answer-buttons"]}>
