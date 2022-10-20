@@ -149,7 +149,8 @@
     pointer-events: none;
     background-color: green;
     border: 1px solid green;
-    animation: swipe 4s;
+    animation: swipe 0.7s;
+    animation-iteration-count: infinite;
 }
 
 
