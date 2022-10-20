@@ -129,7 +129,7 @@
 }
 #svar-input-text {
     all: unset;
-    position: absolute;
+    position: inline-block;
     left: 0%;
     top: 0%;
     height: 100%;
