@@ -124,6 +124,7 @@
     margin: 0px;
     width: 42%;
     height: 10%;
+    margin-bottom: 10px;
     background-color: red;
 }
 #svar-input-text {
