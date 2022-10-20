@@ -137,7 +137,7 @@ class Pugg extends Component {
         }
     }
     handleAnswer() {
-        alert("Answer")
+        
     }
     handleSkip() {
         alert("SKIP!")
@@ -160,18 +160,31 @@ class Pugg extends Component {
                     {(this.state.selectedLang == null) && <LanguageSelector handler = {this.setLang} />}
                     <div id={styles["question"]}>
                         <h2>Skriv <span className={styles["bold"]+" "+currentWord[2]+" word"}>{norwegian}</span> på tysk</h2>
-                        <input ref={input => input && input.focus()} type="text" spellcheck="false" onChange={this.handleInput} onKeyPress={this.handleEnter} id={styles["svar-input"]}></input>
+                        <div id={styles["svar-input"]}>
+                            <input 
+                            ref={input => input && input.focus()} 
+                            type="text" 
+                            spellcheck="false" 
+                            onChange={this.handleInput} 
+                            onKeyPress={this.handleEnter} />
+                        </div>
                         <div id={styles["answer-buttons"]}>
                             <button
                             onClick={
                                 this.handleSkip
                             }
-                            className={styles["answer-button"]}>Hopp over</button>
+                            className={styles["answer-button"]}
+                            >
+                                Hopp over
+                            </button>
                             <button 
                             onClick={
                                 this.handleAnswer
                             }
-                            className={styles["answer-button"]}>Svar</button>
+                            className={styles["answer-button"]}
+                            >
+                                Svar
+                            </button>
                         </div>
                     </div>
                 </div>
