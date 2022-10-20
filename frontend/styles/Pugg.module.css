@@ -120,6 +120,7 @@
 
 
 #svar-input {
+    position: relative;
     margin: 0px;
     width: 42%;
     height: 10%;
