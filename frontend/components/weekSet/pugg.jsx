@@ -170,7 +170,6 @@ class Pugg extends Component {
                             onKeyPress={this.handleEnter} />
                             <div id={styles["svar-input-load"]} />
                             <h3>Super!</h3>
-
                         </div>
 
                         <div id={styles["answer-buttons"]}>
