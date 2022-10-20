@@ -157,7 +157,7 @@
 #svar-input-correct {
     width: 100%;
     text-align: center;
-    
+    color: white;
 }
 
 @keyframes swipe {
