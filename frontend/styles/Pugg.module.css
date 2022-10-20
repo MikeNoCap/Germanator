@@ -127,7 +127,13 @@
     text-align: center;
     background-color: red;
 }
-
+#svar-input-text {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+}
 
 #answer-buttons {
     margin-top: 5px;
