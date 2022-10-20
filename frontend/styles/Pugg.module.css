@@ -125,7 +125,6 @@
     width: 42%;
     height: 10%;
     margin-bottom: 10px;
-    background-color: red;
 }
 #svar-input-text {
     all: unset;
@@ -139,6 +138,7 @@
     font-size: 2.5vw;
     text-align: center;
     padding: 0px;
+    background-color: white;
 }
 #svar-input-load {
     position: absolute;
