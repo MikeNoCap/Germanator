@@ -157,6 +157,8 @@
 #svar-input-correct {
     position: absolute;
     width: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
     height: 100%;
     font-size: 2.5vw;
     padding: 0px;
