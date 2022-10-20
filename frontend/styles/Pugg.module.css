@@ -166,6 +166,8 @@
     top: 50%;
     transform: translate(0%, -50%);
 
+    text-align: center;
+
     color: white;
     animation: swipe 2s;
     animation-iteration-count: infinite;
