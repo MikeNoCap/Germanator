@@ -136,6 +136,15 @@
     font-size: 2.5vw;
     text-align: center;
 }
+#svar-input-load {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    font-size: 2.5vw;
+    text-align: center;
+}
 
 #answer-buttons {
     margin-top: 5px;
