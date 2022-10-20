@@ -135,6 +135,7 @@
     width: 100%;
     font-size: 2.5vw;
     text-align: center;
+    padding: 0px;
 }
 #svar-input-load {
     position: absolute;
