@@ -151,6 +151,12 @@
     border: 1px solid green;
 }
 
+
+@keyframes swipe {
+    from { width: 0%; }
+    to {width: 100%;}
+}
+
 #answer-buttons {
     margin-top: 5px;
     width: 45%;
