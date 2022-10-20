@@ -154,20 +154,8 @@
 }
 
 
-#svar-input-correct {
-    position: absolute;
-
+#svar-input-load h2 {
     font-size: 2.5vw;
-
-
-    padding: 0px;
-    margin: 0px;
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    color: white;
 }
 
 @keyframes swipe {
