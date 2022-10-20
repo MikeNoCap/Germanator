@@ -168,6 +168,7 @@
     text-align: center;
 
     color: white;
+    width: 100%;
     animation: swipe 10s;
 }
 
