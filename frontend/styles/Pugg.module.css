@@ -127,6 +127,11 @@
     text-align: center;
 }
 
+#svar-input input {
+    width: 100%;
+    height: 100%;
+}
+
 
 #answer-buttons {
     margin-top: 5px;
