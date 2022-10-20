@@ -155,6 +155,7 @@
 
 
 #svar-input-correct {
+    position: absolute;
     width: 100%;
     text-align: center;
     color: white;
