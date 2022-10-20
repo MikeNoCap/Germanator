@@ -132,7 +132,7 @@ class Pugg extends Component {
         if (this.state.inputValue === "") {
             this.handleSkip()
         }
-        esle {
+        else {
             this.handleAnswer()
         }
     }
