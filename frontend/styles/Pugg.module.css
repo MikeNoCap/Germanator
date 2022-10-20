@@ -164,8 +164,7 @@
     margin: 0px;
 
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(0%, -50%);
 
     color: white;
     animation: swipe 2s;
