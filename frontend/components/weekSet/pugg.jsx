@@ -97,8 +97,9 @@ function LanguageSelector(props) {
     )
 }
 
+
 function Prompt(props){
-    const xAnimate = props.outro ? 900 : 0;
+    const xAnimate = props.outro ? (props.correctAnswer ? 900 : -900) : 0;
     const yInitial = props.outro ? 0 : -300
 
     return (
@@ -117,6 +118,7 @@ function Prompt(props){
 
 function Main(props) {
     const [fadePropmt, setFadePropmt] = useState(false);
+    const [correctAnswer, setCorrectAnswer] = useState(false);
     
 
     function skipPrompt() {
@@ -126,17 +128,24 @@ function Main(props) {
         if (/^\s*$/.test(props.inputValue)) {
             return skipPrompt()
         }
+        if (props.inputValue === props.definiton) {
+            setCorrectAnswer(true);
+        }
+        else {
+            setCorrectAnswer(false);
+        }
         props.clearInput();
         setFadePropmt(true);
         setTimeout(() => {
             props.handleAnswer();
             setFadePropmt(false);
-        }, 400);
+        }, 600);
     }
 
     return (
-        <div id={styles["question"]}>
-            <Prompt key={fadePropmt} outro={fadePropmt} word={props.norwegian} wordType={props.wordType}></Prompt>
+        <React.Fragment>
+            <div id={styles["question"]}>
+            <Prompt key={fadePropmt} correctAnswer={correctAnswer} outro={fadePropmt} word={props.term} wordType={props.wordType}></Prompt>
             <div id={styles["svar-input"]}>
                 
                 <input 
@@ -153,6 +162,12 @@ function Main(props) {
                     }
                     validateAnswer();
                 }} />
+                
+
+                {(fadePropmt && correctAnswer) && <motion.div id={styles["correct-swipe"]} initial={{width: "0%"}} animate={{width: "100%"}}></motion.div>}
+                {(fadePropmt && correctAnswer) && <motion.h2 id={styles["correct-swipe-text"]} initial={{width: "0%"}} animate={{width: "100%"}}>Super!</motion.h2>}
+                {(fadePropmt && !correctAnswer) && <motion.div id={styles["wrong-swipe"]} initial={{width: "0%"}} animate={{width: "100%"}}></motion.div>}
+                {(fadePropmt && !correctAnswer) && <motion.h2 id={styles["wrong-swipe-text"]} initial={{width: "0%"}} animate={{width: "100%"}}>Noch einmal...</motion.h2>}
 
                 
             </div>
@@ -175,7 +190,10 @@ function Main(props) {
                     Svar
                 </button>
             </div>
+            
+
         </div>
+        </React.Fragment>
     )
 }
 
@@ -258,6 +276,18 @@ class Pugg extends Component {
             norwegian = currentWord[1]
             german = currentWord[0]
         }
+        let term;
+        let definiton;
+        if (this.state.selectedLang != null) {
+            if (this.state.selectedLang === "german") {
+                term = norwegian;
+                definiton = german;
+            }
+            else {
+                term = german;
+                definiton = norwegian;
+            }
+        }
 
         return (
             <React.Fragment>
@@ -266,7 +296,8 @@ class Pugg extends Component {
                     {
                     (this.state.selectedLang == null) ? 
                     <LanguageSelector handler = {this.setLang} /> : <Main 
-                    norwegian={norwegian}
+                    definiton={definiton}
+                    term={term}
                     handleInput={this.handleInput}
                     clearInput={this.clearInput}
                     handleAnswer={this.handleAnswer}
