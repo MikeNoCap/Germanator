@@ -166,6 +166,18 @@
     border: 1px solid rgb(232, 0, 0);
     border-radius: 6px;
 }
+#skip-swipe {
+    position: absolute;
+
+    right: 0%;
+    top: 0%;
+    height: 100%;
+    width: 0%;
+    pointer-events: none;
+    background-color: rgb(175, 175, 175);
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 6px;
+}
 
 
 #correct-swipe-text {
@@ -187,6 +199,24 @@
     left: 0px;
 }
 #wrong-swipe-text {
+    position: absolute;
+
+    font-size: 2.5vw;
+
+
+    padding: 0px;
+    margin: 0px;
+
+    top: 50%;
+    transform: translate(0%, -50%);
+
+    text-align: center;
+
+    color: white;
+    width: 0%;
+    right: 0px;
+}
+#skip-swipe-text {
     position: absolute;
 
     font-size: 2.5vw;
