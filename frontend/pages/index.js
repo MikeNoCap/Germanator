@@ -73,7 +73,7 @@ export default function Home() {
   const [weekSets, setWeekSets ] = useState(null);
   useEffect(() => {
     if (weekSets) { return; }
-    socket = io("http://194.195.244.202:8080");
+    socket = io("http://panel.mogus.lol:8080");
     socket.on('connect', () => {
       socket.emit("getAllWeekSets")
     });

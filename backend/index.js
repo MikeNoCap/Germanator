@@ -114,7 +114,7 @@ io.on("connection", (socket) => {
         socket.emit("allWeekSets", weekSets);
 
     })
-    socket.on("getWeekSet", async (data) => {
+    socket.on("getWeekSet", async (data, callback) => {
         const { week, year } = data;
         const weekSet = await pool.query("SELECT * FROM groups WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
         if (weekSet.rows.length == 0) {
@@ -133,7 +133,7 @@ io.on("connection", (socket) => {
             words.push(fullWord);
         }
 
-        socket.emit("weekSet", words);
+        callback(words)
     })
 })
 
