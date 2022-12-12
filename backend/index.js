@@ -55,6 +55,7 @@ async function getVerbData(wordId) {
 async function getFullWord(wordId) {
     const setWord = await pool.query("SELECT * FROM words WHERE id = $1", [wordId]);
     const wordInfo = {
+        id,
         german_word,
         norwegian_word,
         word_type
@@ -87,7 +88,7 @@ async function getSetWords(setId) {
 
 io.on("connection", (socket) => {
     console.log("User connected");
-    socket.on("getAllWeekSets", async (data) => {
+    socket.on("getAllWeekSets", async (data, callback) => {
         const weekSetsResult = await pool.query("SELECT * FROM groups WHERE is_weekly = true");
         const weekSetsRows = weekSetsResult.rows;
 
@@ -111,10 +112,10 @@ io.on("connection", (socket) => {
 
             weekSets.push(weekSet);
         }
-        socket.emit("allWeekSets", weekSets);
+        callback(weekSets);
 
     })
-    socket.on("getWeekSet", async (data, callback) => {
+    socket.on("getWeekSet", async (data) => {
         const { week, year } = data;
         const weekSet = await pool.query("SELECT * FROM groups WHERE is_weekly = true AND week = $1 AND year = $2", [week, year]);
         if (weekSet.rows.length == 0) {
@@ -133,7 +134,7 @@ io.on("connection", (socket) => {
             words.push(fullWord);
         }
 
-        callback(words)
+        socket.emit("weekSet", words);
     })
 })
 

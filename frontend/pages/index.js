@@ -70,37 +70,32 @@ class WeekSet extends React.Component {
 let socket;
 
 export default function Home() {
-  const [weekSets, setWeekSets ] = useState(null);
+  const [weekSets, setWeekSets] = useState(null);
   useEffect(() => {
     if (weekSets) { return; }
     socket = io("http://panel.mogus.lol:8080");
     socket.on('connect', () => {
-      socket.emit("getAllWeekSets")
-    });
-
-    socket.on("allWeekSets", (data) => {
-      console.log(data)
-      const weekSets = [];
-      let setNr = 0;
-      for (const wordSet of data) {
-        setNr++;
-        const setWords = [];
-        for (const word of wordSet.words) {
-          setWords.push(
-            <Word word={word.german_word} wordType={word.word_type} gender={word.gender}/>
+      socket.emit("getAllWeekSets", {}, (data) => {
+        const weekSets = [];
+        for (const wordSet of data) {
+          const setWords = [];
+          for (const word of wordSet.words) {
+            setWords.push(
+              <Word key={word.id} word={word.german_word} wordType={word.word_type} gender={word.gender} />
+            )
+          }
+          weekSets.push(
+            <WeekSet
+              key={wordSet.id}
+              year={wordSet.year}
+              week={wordSet.week}
+              title={wordSet.title}
+              words={setWords} />
           )
         }
-        weekSets.push(
-          <WeekSet
-            key={setNr}
-            year={wordSet.year}
-            week={wordSet.week}
-            title={wordSet.title}
-            words={setWords} />
-        )
-      }
-      setWeekSets(weekSets);
-    })
+        setWeekSets(weekSets);
+      })
+    });
 
     socket.on('disconnect', () => {
 
