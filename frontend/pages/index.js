@@ -84,7 +84,7 @@ export default function Home() {
               <Word key={word.id} word={word.german_word} wordType={word.word_type} gender={word.gender} />
             )
           }
-          weekSets.push(
+          weekSets.push(  
             <WeekSet
               key={wordSet.id}
               year={wordSet.year}

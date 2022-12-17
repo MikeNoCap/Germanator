@@ -53,11 +53,11 @@
 }
 .lang#german {
     background-size: cover;
-    background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png");
+    background-image: url("/german_flag.png");
 }
 .lang#norwegian {
     background-size: contain;
-    background-image: url("http://panel.mogus.lol/image.png");
+    background-image: url("/norwegian_flag.png");
 }
 
 .lang h2 {
@@ -277,4 +277,24 @@
     border-radius: 3px;
     position: absolute;
     transform: translateX(-50%);
+}
+
+.popup-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrong-answer {
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 65%;
+    height: 65%;
+
 }

@@ -90,10 +90,18 @@ function LanguageSelector(props) {
             </div>
             <button onClick={() => {
                 props.handler(selectedLang);
-            }} className={styles["start-btn"]}>
+            }} className={styles["start-btn"]}> 
                 Start
             </button>
         </div>
+    )
+}
+
+function WrongAnswerPopup(props) {
+    return (
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className={styles["popup-container"]}>
+            <motion.div className={styles["wrong-answer"]} initial={{y: 1000}} animate={{y: 0}} transition={{type: "tween", duration: 1}}></motion.div>
+        </motion.div>
     )
 }
 
@@ -118,8 +126,7 @@ function Prompt(props){
 
 function Main(props) {
     const [fadePropmt, setFadePropmt] = useState(false);
-    const [correctAnswer, setCorrectAnswer] = useState(false);
-    
+    const [correctAnswer, setCorrectAnswer] = useState(true);    
 
     function skipPrompt() {
         alert("SKIP")
@@ -144,10 +151,10 @@ function Main(props) {
 
     return (
         <React.Fragment>
+            {!correctAnswer && <WrongAnswerPopup></WrongAnswerPopup>}
             <div id={styles["question"]}>
             <Prompt key={fadePropmt} correctAnswer={correctAnswer} outro={fadePropmt} word={props.term} wordType={props.wordType}></Prompt>
             <div id={styles["svar-input"]}>
-                
                 <input 
                 value={props.inputValue}
                 id={styles["svar-input-text"]}
@@ -156,7 +163,7 @@ function Main(props) {
                 spellCheck="false"
                 autoComplete="off"
                 onChange={props.handleInput} 
-                onKeyPress={(event) => {
+                onKeyDown={(event) => {
                     if (event.key != "Enter") {
                         return
                     }
