@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from "../styles/WordCards.module.css"
 import { motion } from "framer-motion";
-
+import getWordStyles from '../utils/getWordStyles';
 
 function CardSide(props) {
     const language = props.isFlipped ? 'norwegian' : 'german';
@@ -24,18 +24,7 @@ function CardSide(props) {
                         className={styles["side"]}>
                 <div className={styles["card"]}>
                     <div className={styles["word-container"]}>
-                        {(props.word_type === "noun") &&
-                            <h1
-                                className={"word" + " " + "article"}>
-                                {(props.gender === "feminine") && "die"}
-                                {(props.gender === "masculine") && "der"}
-                                {(props.gender === "neuter") && "das"}
-                            </h1>
-                        }
-                        <h1
-                            className={"word" + " " + props.word_type}>
-                            {props.german_word}
-                        </h1>
+                        {getWordStyles("h1", props.word_type, props.german_word, props.gender, true)}
                     </div>
                 </div>
             </motion.div>

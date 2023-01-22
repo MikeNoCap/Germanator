@@ -3,66 +3,11 @@ import styles from "../../styles/Pugg.module.css";
 import Header from "../header.jsx";
 import shuffleArray from '../../utils/arrayShuffle';
 import getStyles from "../../utils/getStyles";
+import { NounArticles } from '../../utils/languageTables';
 import { motion } from "framer-motion";
+import getWordStyles from '../../utils/getWordStyles';
 
-const articleTable = {
-    "Nominative": {
-        "proper": {
-            "masculine": "der",
-            "feminine": "die",
-            "neuter": "das",
-            "plural": "die"
-        },
-        "non-proper": {
-            "masculine": "ein",
-            "feminine": "eine",
-            "neuter": "ein",
-            "plural": "keine"
-        }
-    },
-    "Accusative": {
-        "proper": {
-            "masculine": "den",
-            "feminine": "die",
-            "neuter": "das",
-            "plural": "die"
-        },
-        "non-proper": {
-            "masculine": "einen",
-            "feminine": "eine",
-            "neuter": "ein",
-            "plural": "keine"
-        }
-    },
-    "Dative": {
-        "proper": {
-            "masculine": "dem",
-            "feminine": "der",
-            "neuter": "dem",
-            "plural": "den"
-        },
-        "non-proper": {
-            "masculine": "einem",
-            "feminine": "einer",
-            "neuter": "einem",
-            "plural": "keinen"
-        }
-    },
-    "Genitive": {
-        "proper": {
-            "masculine": "des",
-            "feminine": "der",
-            "neuter": "des",
-            "plural": "der"
-        },
-        "non-proper": {
-            "masculine": "eines",
-            "feminine": "einer",
-            "neuter": "eines",
-            "plural": "keiner"
-        }
-    }
-}
+
 
 function LanguageSelector(props) {
     const [selectedLang, setSelectedLang] = useState("...");
@@ -100,7 +45,14 @@ function LanguageSelector(props) {
 function WrongAnswerPopup(props) {
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className={styles["popup-container"]}>
-            <motion.div className={styles["wrong-answer"]} initial={{y: 1000}} animate={{y: 0}} transition={{type: "tween", duration: 1}}></motion.div>
+            <motion.div className={styles["wrong-answer"]} initial={{y: 1000}} animate={{y: 0}} transition={{type: "tween", duration: 1}}>
+                <h1>Du skrev</h1>
+                <h1>{props.inputValue}</h1>
+                <h1>Riktig svar er</h1>
+                {getWordStyles("h1", props.word_type, props.definition, props.gender)}
+
+                <input type="text" placeholder='Gjenta det riktige svaret for å fortsette'></input>
+            </motion.div>
         </motion.div>
     )
 }
@@ -115,7 +67,7 @@ function Prompt(props){
             Skriv <span className={
                 getStyles([
                     "word",
-                    props.wordType,
+                    props.word_type,
                 ])
             }>
                 {props.word}
@@ -132,28 +84,31 @@ function Main(props) {
         alert("SKIP")
     }
     function validateAnswer() {
+
         if (/^\s*$/.test(props.inputValue)) {
             return skipPrompt()
         }
-        if (props.inputValue === props.definiton) {
-            setCorrectAnswer(true);
+        const article = props.word_type === "noun" ? NounArticles.article("nominative", true, props.gender) + " " : ""
+        const answer = props.inputValue === article + props.definition
+        
+        // Clear only once the answer is correct
+        if (answer) {
+            props.clearInput();
         }
-        else {
-            setCorrectAnswer(false);
-        }
-        props.clearInput();
+        setCorrectAnswer(answer)
+        
         setFadePropmt(true);
         setTimeout(() => {
-            props.handleAnswer();
+            props.handleAnswer(answer);
             setFadePropmt(false);
         }, 600);
     }
 
     return (
         <React.Fragment>
-            {!correctAnswer && <WrongAnswerPopup></WrongAnswerPopup>}
+            {!correctAnswer && <WrongAnswerPopup inputValue={props.inputValue} definition={props.definition} word_type={props.word_type} gender={props.gender}></WrongAnswerPopup>}
             <div id={styles["question"]}>
-            <Prompt key={fadePropmt} correctAnswer={correctAnswer} outro={fadePropmt} word={props.term} wordType={props.wordType}></Prompt>
+            <Prompt key={fadePropmt} correctAnswer={correctAnswer} outro={fadePropmt} word={props.term} word_type={props.word_type}></Prompt>
             <div id={styles["svar-input"]}>
                 <input 
                 value={props.inputValue}
@@ -221,9 +176,7 @@ class Pugg extends Component {
     state = {
         selectedLang: null,
         currentWord: 0,
-        inputValue: "",
-        feedbackCorrect: false
-    }
+        inputValue: ""    }
     setLang(lang) {
         this.setState(
             {
@@ -252,7 +205,13 @@ class Pugg extends Component {
             this.handleAnswer()
         }
     }
-    handleAnswer() {
+    handleAnswer(correctAnswer) {
+
+        // User is not allowed to move on to next word before answer is correct
+        if (!correctAnswer) {
+            return
+        }
+
         let nextWord;
         if (this.state.currentWord === this.words.length-1) {
             nextWord = 0;
@@ -261,7 +220,6 @@ class Pugg extends Component {
             nextWord = this.state.currentWord+1
         }
         this.setState({
-            feedbackCorrect: true,
             currentWord: nextWord
         })
         
@@ -271,28 +229,29 @@ class Pugg extends Component {
     }
     render() {
         const currentWord = this.words[this.state.currentWord];
-        const wordType = currentWord[2];
+        const word_type = currentWord[2];
+        const gender = word_type === "noun" ? currentWord[4] : undefined
 
         let norwegian;
         let german;
-        if (wordType == "noun") {
+        if (word_type == "noun") {
             norwegian = currentWord[5]
-            german = articleTable["Nominative"]["proper"][currentWord[4]]+" "+currentWord[0]
+            german = currentWord[0]
         }
         else {
             norwegian = currentWord[1]
             german = currentWord[0]
         }
         let term;
-        let definiton;
+        let definition;
         if (this.state.selectedLang != null) {
             if (this.state.selectedLang === "german") {
                 term = norwegian;
-                definiton = german;
+                definition = german;
             }
             else {
                 term = german;
-                definiton = norwegian;
+                definition = norwegian;
             }
         }
 
@@ -303,12 +262,13 @@ class Pugg extends Component {
                     {
                     (this.state.selectedLang == null) ? 
                     <LanguageSelector handler = {this.setLang} /> : <Main 
-                    definiton={definiton}
+                    definition={definition}
                     term={term}
                     handleInput={this.handleInput}
                     clearInput={this.clearInput}
                     handleAnswer={this.handleAnswer}
-                    wordType={wordType}
+                    word_type={word_type}
+                    gender={gender}
                     inputValue={this.state.inputValue}
                     />
                     }
