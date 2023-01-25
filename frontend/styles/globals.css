@@ -24,7 +24,8 @@ body {
   width: fit-content;
   height: fit-content;
   padding: 2px;
-  margin-left: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .noun {

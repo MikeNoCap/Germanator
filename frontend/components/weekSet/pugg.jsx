@@ -43,15 +43,34 @@ function LanguageSelector(props) {
 }
 
 function WrongAnswerPopup(props) {
+    function onInputChange(event) {
+        const answer = event.target.value
+        const article = props.word_type === "noun" ? NounArticles.article("nominative", true, props.gender) + " " : ""
+        const correctAnswer = answer === article + props.definition
+        console.log(answer)
+        console.log(article+props.definition)
+        if (correctAnswer) {
+            props.nextWord()
+        }
+    }
+    function getPreviousInput() {
+        const words = props.inputValue.match(/\b[\wß]+\b/gu);
+        return words.map((word) => {
+            if (["die", "das", "der"].includes(word)) {
+                return getWordStyles("span", "article", word, null, true, "nominative", true)
+            }
+            return getWordStyles("span", props.word_type, word, null, true, "nominative", true)
+        })
+    }
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className={styles["popup-container"]}>
-            <motion.div className={styles["wrong-answer"]} initial={{y: 1000}} animate={{y: 0}} transition={{type: "tween", duration: 1}}>
+            <motion.div className={styles["wrong-answer"]} initial={props.doFade ? {y: 0} : {y: 1000}} animate={props.doFade ? {x:1000} : {y: 0}} transition={{type: "tween", duration: 1}}>
                 <h1>Du skrev</h1>
-                <h1>{props.inputValue}</h1>
+                <h1>{getPreviousInput()}</h1>
                 <h1>Riktig svar er</h1>
                 {getWordStyles("h1", props.word_type, props.definition, props.gender)}
 
-                <input type="text" placeholder='Gjenta det riktige svaret for å fortsette'></input>
+                <input autoFocus onChange={onInputChange} type="text" placeholder='Gjenta det riktige svaret for å fortsette'></input>
             </motion.div>
         </motion.div>
     )
@@ -78,6 +97,7 @@ function Prompt(props){
 
 function Main(props) {
     const [fadePropmt, setFadePropmt] = useState(false);
+    const [fadeWrongAnswerPrompt, setFadeWrongAnswerPropmt] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(true);    
 
     function skipPrompt() {
@@ -97,21 +117,37 @@ function Main(props) {
         }
         setCorrectAnswer(answer)
         
-        setFadePropmt(true);
+        setFadePropmt(true);    
         setTimeout(() => {
             props.handleAnswer(answer);
             setFadePropmt(false);
         }, 600);
     }
+    function nextWord() {
+        setTimeout(() => {
+            setCorrectAnswer(true)
+            setFadePropmt(true);
+            setTimeout(() => {
+                props.handleAnswer(true);
+                setFadePropmt(false);
+                props.clearInput();
+                setFadeWrongAnswerPropmt(false);
+            }, 600);
+        }, 1000)
+        setFadeWrongAnswerPropmt(true)
+        
+    }
+    
 
     return (
         <React.Fragment>
-            {!correctAnswer && <WrongAnswerPopup inputValue={props.inputValue} definition={props.definition} word_type={props.word_type} gender={props.gender}></WrongAnswerPopup>}
+            {!correctAnswer && <WrongAnswerPopup doFade={fadeWrongAnswerPrompt} nextWord={nextWord} inputValue={props.inputValue} definition={props.definition} word_type={props.word_type} gender={props.gender}></WrongAnswerPopup>}
             <div id={styles["question"]}>
             <Prompt key={fadePropmt} correctAnswer={correctAnswer} outro={fadePropmt} word={props.term} word_type={props.word_type}></Prompt>
             <div id={styles["svar-input"]}>
                 <input 
                 value={props.inputValue}
+                disabled={!correctAnswer}
                 id={styles["svar-input-text"]}
                 ref={input => input && input.focus()} 
                 type="text" 

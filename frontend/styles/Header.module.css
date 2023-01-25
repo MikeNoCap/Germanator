@@ -34,3 +34,8 @@
     -webkit-user-select: none;
     -o-user-select: none;
 }
+
+#logo-text a {
+    all: unset;
+    cursor: pointer;
+}

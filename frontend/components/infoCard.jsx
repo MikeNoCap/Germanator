@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from "../styles/InfoCard.module.css"
 import { NounArticles } from '../utils/languageTables';
 import getWordStyles from '../utils/getWordStyles';
+import { motion } from 'framer-motion';
 
 function NounGenderDisplay(props) {
     return (
@@ -39,13 +40,14 @@ function NounProperInfo(props) {
 }
 function NounNonProperInfo(props) {
     const { nounCase, gender, german_word, german_plural } = props;
+    console.log(gender)
     return (
         <div key={german_word+german_plural} className={styles["non-propers"] + " " + styles["load"]}>
             <h2>Ubestemt</h2>
 
             <div className={styles["singular"]}>
                 <h3 className={styles["singular-text"]}>Entall</h3>
-                {getWordStyles("h3", "noun", german_plural, gender, false, nounCase)}
+                {getWordStyles("h3", "noun", german_word, gender, false, nounCase)}
             </div>
             <div className={styles["plural"]}>
                 <h3 className={styles["plural-text"]}>Flertall</h3>
@@ -80,7 +82,7 @@ class NounCard extends Component {
         const { german_word, german_plural, gender } = this.props;
         const nounCase = this.state.cases[this.state.caseIndex]
         return (
-            <div key={this.props.word_type} className={styles["info-card"] + " " + styles["load"]}>
+            <motion.div key={this.props.word_type} className={styles["info-card"] + " " + styles["load"]}>
                 <h1 className={styles["title"]+" noun"}>Substantiv</h1>
                 <NounGenderDisplay gender={gender} />
                 <NounCaseSelector key={german_word} handlePrevious={this.handlePrevious} handleNext={this.handleNext} form={this.state.cases[this.state.caseIndex]} />
@@ -88,7 +90,7 @@ class NounCard extends Component {
                     <NounProperInfo nounCase={nounCase} gender={gender} german_word={german_word} german_plural={german_plural} />
                     <NounNonProperInfo nounCase={nounCase} gender={gender} german_word={german_word} german_plural={german_plural} />
                 </div>
-            </div>
+            </motion.div>
         );
     }
 }

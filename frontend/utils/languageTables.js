@@ -58,6 +58,9 @@ export class NounArticles {
         }
     }
     static article(nounCase, isProper, gender) {
+        if (!gender) {
+            return
+        }
         const proper = isProper ? "proper" : "non-proper"
         return this.articleTable[nounCase.toLowerCase()][proper][gender.toLowerCase()]
     }

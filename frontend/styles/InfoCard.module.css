@@ -1,36 +1,29 @@
-
-.load {
-    animation: load 0.6s;
-}
-
 .info-card {
+    background-color: #f3f3f3;
     overflow: hidden;
     height: 100%;
     border-radius: 20px; 
 }
 .adverb-card {
+    position: absolute;
     background-color: forestgreen;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: unset;
     gap: 0px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    padding-bottom: 10%;
+    padding-top: 10%;
 }
 .adverb-card h3 {
     text-align: center;
     margin: 0px;
 }
 
-
-@keyframes load {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
 
 .title {
     margin: 0px;
