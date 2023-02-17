@@ -1,1 +1,1 @@
-*der Germanator
+**der Germanator**
